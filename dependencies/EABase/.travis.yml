@@ -1,0 +1,68 @@
+language: cpp
+
+os:
+  - linux
+  - osx
+  - windows
+
+compiler:
+  - gcc
+  - clang
+  - msvc
+
+env:
+  - EA_CONFIG=Debug
+  - EA_CONFIG=Release
+  
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - george-edison55-precise-backports
+      - llvm-toolchain-trusty-7
+    packages:
+      - cmake
+      - cmake-data
+      - g++-7
+      - clang-7
+
+matrix:
+    exclude:
+      - os: osx
+        compiler: gcc
+      - os: osx
+        compiler: msvc
+      - os: linux 
+        compiler: msvc
+      - os: windows
+        compiler: clang
+      - os: windows
+        compiler: gcc
+
+# Handle git submodules yourself
+git:
+    submodules: false
+
+# Use sed to replace the SSH URL with the public URL, then initialize submodules
+before_install:
+    - sed --version >/dev/null 2>&1 && sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules || sed -i "" 's/git@github.com:/https:\/\/github.com\//'  .gitmodules
+    - git submodule update --init 
+
+install:
+  - if [[ "$CXX" == "g++" ]]; then export CC="gcc-7"  ;fi
+  - if [[ "$CXX" == "g++" ]]; then export CXX="g++-7" ;fi
+  - if [[ "$CXX" == "clang++" && "${TRAVIS_OS_NAME}" != "osx" ]]; then export CC="clang-7"    ;fi
+  - if [[ "$CXX" == "clang++" && "${TRAVIS_OS_NAME}" != "osx" ]]; then export CXX="clang++-7" ;fi
+
+# Universal Setup
+before_script:
+  - mkdir build_$EA_CONFIG
+  - cd build_$EA_CONFIG
+  - cmake .. -DEABASE_BUILD_TESTS:BOOL=ON
+  - cmake --build . --config $EA_CONFIG
+
+script:
+  # Run Tests
+  - cd $TRAVIS_BUILD_DIR/build_$EA_CONFIG/test
+  - ctest -C $EA_CONFIG -V || exit 1
+

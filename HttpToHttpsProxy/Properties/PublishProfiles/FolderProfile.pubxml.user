@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\LocalHost\HttpToHttpsProxy</_PublishTargetUrl>
+    <History>True|2022-04-29T22:51:48.2586716Z;True|2022-04-29T23:37:00.8293022+02:00;True|2022-04-29T23:36:25.2086001+02:00;True|2022-04-29T23:01:01.4853095+02:00;</History>
+  </PropertyGroup>
+</Project>

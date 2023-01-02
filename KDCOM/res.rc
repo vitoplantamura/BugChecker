@@ -1,0 +1,49 @@
+//
+// Include the necessary resources
+//
+#include <winver.h>
+// #include <ntdef.h>
+
+#ifdef RC_INVOKED
+
+//
+// Set up debug information
+//
+#if DBG
+#define VER_DBG VS_FF_DEBUG
+#else
+#define VER_DBG 0
+#endif
+
+// ------- version info -------------------------------------------------------
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION             1,0,0,0
+PRODUCTVERSION          1,0,0,0
+FILEFLAGSMASK           VS_FFI_FILEFLAGSMASK
+FILEFLAGS               VER_DBG
+FILEOS                  VOS_NT
+FILETYPE                VFT_DRV
+FILESUBTYPE             VFT2_DRV_SYSTEM
+BEGIN
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "000904b0"
+        BEGIN
+            VALUE "Comments", "BugChecker KDCOM"
+            VALUE "CompanyName", "Vito Plantamura"
+            VALUE "FileDescription", "BugChecker KDCOM"
+            VALUE "FileVersion", "V1.0.0.0"
+            VALUE "InternalName", "BugChecker KDCOM"
+            VALUE "LegalCopyright", "(C)2022 Vito Plantamura"
+            VALUE "OriginalFilename", "KDCOM.dll"
+            VALUE "ProductName", "BugChecker"
+            VALUE "ProductVersion", "V1.0.0.0"
+        END
+	END
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x0409,1200
+	END
+END
+#endif

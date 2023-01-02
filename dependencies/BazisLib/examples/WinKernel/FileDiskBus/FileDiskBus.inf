@@ -1,0 +1,61 @@
+; This sample driver creates two 128MB virtual disks mapped to files in C:\
+;	1. C:\test0.dsk - mapped to a 1-partition disk (appears as a drive letter)
+;	2. C:\test1.dsk - mapped to an empty disk (appears in Disk Management)
+; To test the driver, format one or both disks, copy some files to them,
+; stop the device from Device Manager and start it again.
+;
+; If test0.dsk or test1.dsk does not exist, it will be initialized with 128MB of
+; zeros. Otherwise, the file will be reused.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=HDC
+ClassGuid={4d36e96a-e325-11ce-bfc1-08002be10318}
+Provider=%BAZIS%
+DriverVer=01/01/2010, 1.00.0000
+CatalogFile=FileDiskBus.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles]
+FileDiskBus.sys  = 1
+
+[Manufacturer]
+%BAZIS%=Standard, NTamd64
+
+[Standard]
+%FileDiskBus.DeviceDesc%=FileDiskBus_Device, root\FileDiskBus
+
+[Standard.NTamd64]
+%FileDiskBus.DeviceDesc%=FileDiskBus_Device, root\FileDiskBus
+
+[FileDiskBus_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+FileDiskBus.sys,,,2
+
+;-------------- Service installation
+[FileDiskBus_Device.NT.Services]
+AddService = FileDiskBus,%SPSVCINST_ASSOCSERVICE%, dev_Service_Inst
+
+; -------------- busenum driver install sections
+[dev_Service_Inst]
+DisplayName    = %dev.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\FileDiskBus.sys
+LoadOrderGroup = Extended Base
+
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+BAZIS = "BazisLib"
+DiskId1 = "FileDiskBus Installation Disk #1"
+FileDiskBus.DeviceDesc = "FileDiskBus device"
+dev.SVCDESC = "FileDiskBus driver"

@@ -1,0 +1,67 @@
+; This sample driver creates two RAM disks using 2 different modes:
+;	1. A 16MB disk with a fixed partition table (gets a drive letter immediately)
+;	2. A 32MB disk with no partition table (appears in Disk Management)
+; To test the driver, format one or both disks and try copying files to and from
+; the disks. 
+
+;Note that when you restart or reload the driver the contents of the disks will be reset.
+
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Volume
+ClassGuid= {71a27cdd-812a-11d0-bec7-08002be2092f}
+Provider=%BAZIS%
+DriverVer=01/01/2010, 1.00.0000
+CatalogFile=RamDiskBus.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames.x86]
+1 = %DiskId1%,,,
+
+[SourceDisksNames.amd64]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles.x86]
+RamDiskBus.sys  = 1
+
+[SourceDisksFiles.amd64]
+RamDiskBus.sys  = 1
+
+[Manufacturer]
+%BAZIS%=Standard, NTamd64
+
+[Standard]
+%RamDiskBus.DeviceDesc%=RamDiskBus_Device, root\RamDiskBus
+
+[Standard.NTamd64]
+%RamDiskBus.DeviceDesc%=RamDiskBus_Device, root\RamDiskBus
+
+[RamDiskBus_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+RamDiskBus.sys,,,2
+
+;-------------- Service installation
+[RamDiskBus_Device.NT.Services]
+AddService = RamDiskBus,%SPSVCINST_ASSOCSERVICE%, dev_Service_Inst
+
+; -------------- busenum driver install sections
+[dev_Service_Inst]
+DisplayName    = %dev.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\RamDiskBus.sys
+LoadOrderGroup = Extended Base
+
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+BAZIS = "BazisLib"
+DiskId1 = "RamDiskBus Installation Disk #1"
+RamDiskBus.DeviceDesc = "RamDiskBus device"
+dev.SVCDESC = "RamDiskBus driver"

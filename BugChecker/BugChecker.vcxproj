@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C47EE630-32C8-43E1-9F57-1769E540816B}</ProjectGuid>
+    <RootNamespace>BugChecker</RootNamespace>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
+    <ProjectName>BugChecker</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetExt>.sys</TargetExt>
+    <TargetName>BugChecker</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetExt>.sys</TargetExt>
+    <TargetName>BugChecker</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.sys</TargetExt>
+    <TargetName>BugChecker</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetExt>.sys</TargetExt>
+    <TargetName>BugChecker</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>_CRT_ALLOCATION_DEFINED;CONFIG_BIGNUM;JS_STRICT_NAN_BOXING;WIN32;_CONSOLE;_X86_;_DDK_;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CallingConvention>StdCall</CallingConvention>
+      <AdditionalOptions>/I..\BugChecker\EASTL_compat_includes /I\WinDDK\7600.16385.1\inc\ddk /I\WinDDK\7600.16385.1\inc\crt /I\WinDDK\7600.16385.1\inc\api /I..\dependencies\zydis\include /I..\dependencies\zydis\dependencies\zycore\include /I..\dependencies\zydis\msvc /I..\dependencies\EASTL\include /I..\dependencies\EABase\include\Common /arch:IA32 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ntoskrnl.lib;hal.lib;int64.lib;ntstrsafe.lib;exsup.lib;wdmsec.lib;BufferOverflowK.lib;ksecdd.lib;Zydis.lib;Zycore.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>\WinDDK\7600.16385.1\lib\WXP\i386;..\dependencies\zydis\msvc\bin\ReleaseX86Kernel\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <SubSystem>Native</SubSystem>
+      <Driver>Driver</Driver>
+      <EntryPointSymbol>DriverEntry</EntryPointSymbol>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <PreprocessorDefinitions>_CRT_ALLOCATION_DEFINED;CONFIG_BIGNUM;JS_STRICT_NAN_BOXING;WIN32;_CONSOLE;_WIN64;_AMD64_;_DDK_;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CallingConvention>StdCall</CallingConvention>
+      <AdditionalOptions>/I..\BugChecker\EASTL_compat_includes /I\WinDDK\7600.16385.1\inc\ddk /I\WinDDK\7600.16385.1\inc\crt /I\WinDDK\7600.16385.1\inc\api /I..\dependencies\zydis\include /I..\dependencies\zydis\dependencies\zycore\include /I..\dependencies\zydis\msvc /I..\dependencies\EASTL\include /I..\dependencies\EABase\include\Common %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ntoskrnl.lib;hal.lib;ntstrsafe.lib;wdmsec.lib;BufferOverflowK.lib;ksecdd.lib;Zydis.lib;Zycore.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>\WinDDK\7600.16385.1\lib\WNET\amd64;..\dependencies\zydis\msvc\bin\ReleaseX64Kernel;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <SubSystem>Native</SubSystem>
+      <Driver>Driver</Driver>
+      <EntryPointSymbol>DriverEntry</EntryPointSymbol>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>_CRT_ALLOCATION_DEFINED;CONFIG_BIGNUM;JS_STRICT_NAN_BOXING;WIN32;_CONSOLE;_X86_;_DDK_;_NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CallingConvention>StdCall</CallingConvention>
+      <AdditionalOptions>/I..\BugChecker\EASTL_compat_includes /I\WinDDK\7600.16385.1\inc\ddk /I\WinDDK\7600.16385.1\inc\crt /I\WinDDK\7600.16385.1\inc\api /I..\dependencies\zydis\include /I..\dependencies\zydis\dependencies\zycore\include /I..\dependencies\zydis\msvc /I..\dependencies\EASTL\include /I..\dependencies\EABase\include\Common /arch:IA32 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ntoskrnl.lib;hal.lib;int64.lib;ntstrsafe.lib;exsup.lib;wdmsec.lib;BufferOverflowK.lib;ksecdd.lib;Zydis.lib;Zycore.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>\WinDDK\7600.16385.1\lib\WXP\i386;..\dependencies\zydis\msvc\bin\ReleaseX86Kernel\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <SubSystem>Native</SubSystem>
+      <Driver>Driver</Driver>
+      <EntryPointSymbol>DriverEntry</EntryPointSymbol>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetPath)" "$(SolutionDir)..\BcRelease\BugChecker_32bit.sys"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <PreprocessorDefinitions>_CRT_ALLOCATION_DEFINED;CONFIG_BIGNUM;JS_STRICT_NAN_BOXING;WIN32;_CONSOLE;_WIN64;_AMD64_;_DDK_;_NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <CallingConvention>StdCall</CallingConvention>
+      <AdditionalOptions>/I..\BugChecker\EASTL_compat_includes /I\WinDDK\7600.16385.1\inc\ddk /I\WinDDK\7600.16385.1\inc\crt /I\WinDDK\7600.16385.1\inc\api /I..\dependencies\zydis\include /I..\dependencies\zydis\dependencies\zycore\include /I..\dependencies\zydis\msvc /I..\dependencies\EASTL\include /I..\dependencies\EABase\include\Common %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ntoskrnl.lib;hal.lib;ntstrsafe.lib;wdmsec.lib;BufferOverflowK.lib;ksecdd.lib;Zydis.lib;Zycore.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>\WinDDK\7600.16385.1\lib\WNET\amd64;..\dependencies\zydis\msvc\bin\ReleaseX64Kernel;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <SubSystem>Native</SubSystem>
+      <Driver>Driver</Driver>
+      <EntryPointSymbol>DriverEntry</EntryPointSymbol>
+      <TargetMachine>MachineX64</TargetMachine>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetPath)" "$(SolutionDir)..\BcRelease\BugChecker_64bit.sys"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Allocator.cpp" />
+    <ClCompile Include="BcCoroutine.cpp" />
+    <ClCompile Include="Cmd.cpp" />
+    <ClCompile Include="Cmd_ADDR.cpp" />
+    <ClCompile Include="Cmd_BC.cpp" />
+    <ClCompile Include="Cmd_BD.cpp" />
+    <ClCompile Include="Cmd_BE.cpp" />
+    <ClCompile Include="Cmd_BL.cpp" />
+    <ClCompile Include="Cmd_BPX.cpp" />
+    <ClCompile Include="Cmd_D.cpp" />
+    <ClCompile Include="Cmd_E.cpp" />
+    <ClCompile Include="Cmd_KL.cpp" />
+    <ClCompile Include="Cmd_LINES_WIDTH.cpp" />
+    <ClCompile Include="Cmd_MOD.cpp" />
+    <ClCompile Include="Cmd_P.cpp" />
+    <ClCompile Include="Cmd_PAGEIN.cpp" />
+    <ClCompile Include="Cmd_PROC.cpp" />
+    <ClCompile Include="Cmd_QuestionMark.cpp" />
+    <ClCompile Include="Cmd_R.cpp" />
+    <ClCompile Include="Cmd_STACK.cpp" />
+    <ClCompile Include="Cmd_T.cpp" />
+    <ClCompile Include="Cmd_U.cpp" />
+    <ClCompile Include="Cmd_VER.cpp" />
+    <ClCompile Include="Cmd_WR_WD_WS.cpp" />
+    <ClCompile Include="Cmd_X.cpp" />
+    <ClCompile Include="CodeWnd.cpp" />
+    <ClCompile Include="Cpp20CoroutineFill.cpp" />
+    <ClCompile Include="CrtFill.cpp" />
+    <ClCompile Include="DisasmWnd.cpp" />
+    <ClCompile Include="DriverEntry.cpp" />
+    <ClCompile Include="Glyph.cpp" />
+    <ClCompile Include="InputLine.cpp" />
+    <ClCompile Include="LogWnd.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MemReadCor.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="ProcAddress.cpp" />
+    <ClCompile Include="Ps2Keyb.cpp" />
+    <ClCompile Include="QuickJSCInterface.c" />
+    <ClCompile Include="QuickJSCppInterface.cpp" />
+    <ClCompile Include="QuickJS\cutils.c" />
+    <ClCompile Include="QuickJS\libbf.c" />
+    <ClCompile Include="QuickJS\libregexp.c" />
+    <ClCompile Include="QuickJS\libunicode.c" />
+    <ClCompile Include="QuickJS\quickjs-libc.c" />
+    <ClCompile Include="QuickJS\quickjs.c" />
+    <ClCompile Include="RegsWnd.cpp" />
+    <ClCompile Include="Root.cpp" />
+    <ClCompile Include="SymbolFile.cpp" />
+    <ClCompile Include="Symbols.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Wnd.cpp" />
+    <ClCompile Include="X86Step.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="AsmForAmd64.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <MakeAllSymbolsPublic Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</MakeAllSymbolsPublic>
+      <MakeAllSymbolsPublic Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</MakeAllSymbolsPublic>
+      <MakeAllSymbolsPublic Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</MakeAllSymbolsPublic>
+      <MakeAllSymbolsPublic Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</MakeAllSymbolsPublic>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Allocator.h" />
+    <ClInclude Include="BcCoroutine.h" />
+    <ClInclude Include="BugChecker.h" />
+    <ClInclude Include="Cmd.h" />
+    <ClInclude Include="CodeWnd.h" />
+    <ClInclude Include="Cpp20CoroutineFill.h" />
+    <ClInclude Include="CrtFill.h" />
+    <ClInclude Include="DbgKd.h" />
+    <ClInclude Include="DisasmWnd.h" />
+    <ClInclude Include="FunctionPatch.h" />
+    <ClInclude Include="Glyph.h" />
+    <ClInclude Include="InputLine.h" />
+    <ClInclude Include="Ioctl.h" />
+    <ClInclude Include="KdCom.h" />
+    <ClInclude Include="LogWnd.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="MemReadCor.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="ProcAddress.h" />
+    <ClInclude Include="Ps2Keyb.h" />
+    <ClInclude Include="QuickJSCInterface.h" />
+    <ClInclude Include="QuickJSCppInterface.h" />
+    <ClInclude Include="QuickJSDeclFill.h" />
+    <ClInclude Include="QuickJS\cutils.h" />
+    <ClInclude Include="QuickJS\libbf.h" />
+    <ClInclude Include="QuickJS\libregexp-opcode.h" />
+    <ClInclude Include="QuickJS\libregexp.h" />
+    <ClInclude Include="QuickJS\libunicode-table.h" />
+    <ClInclude Include="QuickJS\libunicode.h" />
+    <ClInclude Include="QuickJS\list.h" />
+    <ClInclude Include="QuickJS\quickjs-atom.h" />
+    <ClInclude Include="QuickJS\quickjs-jsx.h" />
+    <ClInclude Include="QuickJS\quickjs-libc.h" />
+    <ClInclude Include="QuickJS\quickjs-opcode.h" />
+    <ClInclude Include="QuickJS\quickjs-version.h" />
+    <ClInclude Include="QuickJS\quickjs.h" />
+    <ClInclude Include="RegsWnd.h" />
+    <ClInclude Include="Root.h" />
+    <ClInclude Include="SymbolFile.h" />
+    <ClInclude Include="Symbols.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Wnd.h" />
+    <ClInclude Include="X86Step.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

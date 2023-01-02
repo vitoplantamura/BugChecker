@@ -1,0 +1,26 @@
+$general
+caption		BazisLib
+desc		readme.txt
+archive		main.bzz
+compression	lzma23
+
+source		bzslib
+
+;If not defined, every file path in archive must begin with valid standard directory prefix
+forcedir	$DESTDIR$\
+
+version		1.00
+;options 	 over,shared,group
+
+
+$registry
+createkey	HKLM\Software\BazisSoft\BazisLib
+setstrsubst		Location	$DESTDIR$
+
+$startmenu
+deletegroup	BazisLib
+creategroup	BazisLib
+createitem	"Reconfigure BazisLib"	$DESTDIR$\BazisLibSetup.exe
+
+$postinstall
+exec		$DESTDIR$\BazisLibSetup.exe

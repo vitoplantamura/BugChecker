@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\String-related functionality">
+      <UniqueIdentifier>{9c3d6103-e946-4d4b-8b5c-5f49c1ea3034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WinKernel">
+      <UniqueIdentifier>{cba2cc13-0f71-41b8-8c41-73a1a24cc607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Win32">
+      <UniqueIdentifier>{aa97a4ab-a6e2-4a15-b0ac-ed9d331e1ec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WinKernel">
+      <UniqueIdentifier>{7e5a9ac1-73b6-4031-a295-13160c49b6f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Win32">
+      <UniqueIdentifier>{7fb324e9-e71a-4245-8f01-3d56ea492683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Posix">
+      <UniqueIdentifier>{c29bda3e-c28e-45e8-bbb1-2760c5be73ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Posix">
+      <UniqueIdentifier>{687933a8-b128-4d51-a04f-d899ce6d532f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\KEXT">
+      <UniqueIdentifier>{1a781d98-640e-46c7-8b1a-e62786a1f751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\KEXT">
+      <UniqueIdentifier>{12b4979c-7513-4222-9152-75ccb3010516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{dfa2f76a-4d17-4122-937a-2a8fa8330bfb}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="kext.mak" />
+    <None Include="debug__posix_.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release__posix_.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="debug__kext_.mak">
+      <Filter>Make files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bzscore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cmndef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="splitstr.h">
+      <Filter>Header Files\String-related functionality</Filter>
+    </ClInclude>
+    <ClInclude Include="strfast.h">
+      <Filter>Header Files\String-related functionality</Filter>
+    </ClInclude>
+    <ClInclude Include="string.h">
+      <Filter>Header Files\String-related functionality</Filter>
+    </ClInclude>
+    <ClInclude Include="strop.h">
+      <Filter>Header Files\String-related functionality</Filter>
+    </ClInclude>
+    <ClInclude Include="tchar_compat.h">
+      <Filter>Header Files\String-related functionality</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\init.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\kmemory.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\memdbg.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="objmgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objcoll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="status.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\ntstatusdbg.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\status_defs.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\status_defs.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\stdafx.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\status_defs.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\atomic.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\atomic.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\atomic.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="atomic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="autolock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sync.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\sync.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\sync.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\sync.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\tls.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="datetime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\datetime.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\datetime.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\guid_compat.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\stdafx.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\datetime.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="autofile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fileflags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\file.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\path.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\path.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\file.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\file.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\thread.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\thread.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\thread.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="SCSI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="minmax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cfgstore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\registry.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\registry.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\cfgstore.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\cfgstore.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\cmndef.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\atomic.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\sync.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\thread.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="thread.h">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\SyncImpl.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\datetime.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\file.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\UnixFileModes.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\cfgstore.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="strbase.h">
+      <Filter>Header Files\String-related functionality</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\socket.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="socket_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\InternetAddress.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="Posix\DNS.h">
+      <Filter>Header Files\Posix</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\socket.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\SmartPointers.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+    <ClInclude Include="KEXT\unicode.h">
+      <Filter>Header Files\KEXT</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\win32_status.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\init.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\memdbg.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\stlsup.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\ntstatus.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\ntstatusdbg.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="Posix\posix_status.cpp">
+      <Filter>Source Files\Posix</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\security.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\path.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Posix\posix_path.cpp">
+      <Filter>Source Files\Posix</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\win32_string.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\ddk_string.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\registry_win32.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\registry_nt.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\win32_socket.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Posix\DNS.cpp">
+      <Filter>Source Files\Posix</Filter>
+    </ClCompile>
+    <ClCompile Include="KEXT\kext_socket.cpp">
+      <Filter>Source Files\KEXT</Filter>
+    </ClCompile>
+    <ClCompile Include="Posix\kext.cpp">
+      <Filter>Source Files\KEXT</Filter>
+    </ClCompile>
+    <ClCompile Include="KEXT\kext_unicode.cpp">
+      <Filter>Source Files\KEXT</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

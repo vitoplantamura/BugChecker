@@ -1,0 +1,49 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.log
+*.tlog
+*.idb
+*.pdb
+*.lastbuildstate
+*.sdf
+*.suo
+*.ilk
+SourceCache.dat
+*.ipch
+Debug
+Release
+Win7Debug
+Debug (KEXT)
+Release (KEXT)
+CodeDB
+/support/strgen/Release
+*.opensdf
+
+# VS
+.vs/*

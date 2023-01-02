@@ -1,0 +1,129 @@
+; Add the following code to \Program Files\Microsoft Visual Studio 9.0\Common7\Packages\Debugger\autoexp.dat
+BazisLib::Win32::_File<*>{
+	preview ( #if ($e.m_hFile == -1) ( #("(Invalid file handle)")) #else (#("Handle = ",$e.m_hFile)) )
+}
+
+BazisLib::ActionStatus::ErrorRecord{
+	preview ( #((HRESULT)$e.Result, "[", $e.Result, "] in ", $e.Function, " at ", $e.File, ", line ", $e.Line, "") )
+}
+
+BazisLib::ActionStatus{
+	preview ( #((HRESULT)$e.m_Result, "[", $e.m_Result, "]") )
+	children
+	(
+		#([actual members]: [$e,!] , $e.m_ErrorRecords)
+	)
+}
+
+BazisLib::istring{
+	preview		( #if(($e._Myres) < ($e._BUF_SIZE)) ( [$e._Bx._Buf,s]) #else ( [$e._Bx._Ptr,s]))
+	stringview	( #if(($e._Myres) < ($e._BUF_SIZE)) ( [$e._Bx._Buf,sb]) #else ( [$e._Bx._Ptr,sb]))
+	children
+	(
+		#if(($e._Myres) < ($e._BUF_SIZE))
+		(
+			#([actual members]: [$e,!] , #array( expr: $e._Bx._Buf[$i], size: $e._Mysize))
+		)
+		#else
+		(
+			#([actual members]: [$e,!],  #array( expr: $e._Bx._Ptr[$i], size: $e._Mysize))
+		)
+	)
+}
+
+BazisLib::iwstring{
+	preview		( #if(($e._Myres) < ($e._BUF_SIZE)) ( [$e._Bx._Buf,su]) #else ( [$e._Bx._Ptr,su]))
+	stringview	( #if(($e._Myres) < ($e._BUF_SIZE)) ( [$e._Bx._Buf,sub]) #else ( [$e._Bx._Ptr,sub]))
+	children
+	(
+		#if(($e._Myres) < ($e._BUF_SIZE))
+		(
+			#([actual members]: [$e,!] , #array( expr: $e._Bx._Buf[$i], size: $e._Mysize))
+		)
+		#else
+		(
+			#([actual members]: [$e,!],  #array( expr: $e._Bx._Ptr[$i], size: $e._Mysize))
+		)
+	)
+}
+
+BazisLib::SingleMallocVector<*>{
+	children
+	(
+		#(#([actual members]: [$e,!]),
+		#array
+		(
+			expr :		($e.pData)[$i],
+			size :		$e.Used
+		))
+	)
+	preview
+	(
+		#(
+			"[", $e.Used , "](",
+			#array
+			(
+				expr :		($e.pData)[$i],
+				size :		$e.Used
+			),
+			")"
+		)
+	)
+}
+
+BazisLib::ObjectManager::ConstManagedPointer<*>{
+	preview
+	( 
+		#(*$e.m_pTarget)
+	)
+}
+
+BazisLib::ObjectManager::ParentServiceReference<*>{
+	preview
+	( 
+		#(*$e.m_pTarget)
+	)
+}
+
+BazisLib::ObjectManager::ManagedPointer<*>{
+	preview
+	( 
+		#(*$e.m_pTarget)
+	)
+}
+
+BazisLib::_DynamicStringT<*>{
+	preview		([$e.m_pBuffer])
+	stringview	([$e.m_pBuffer])
+	children
+	(
+		#([actual members]: [$e,!] , #array( expr: $e.m_pBuffer[$i], size: $e.m_Length))
+	)
+}
+
+BazisLib::_ConstStringT<*>{
+	preview		([$e.m_pBuffer])
+	stringview	([$e.m_pBuffer])
+	children
+	(
+		#([actual members]: [$e,!] , #array( expr: $e.m_pBuffer[$i], size: $e.m_Length))
+	)
+}
+
+BazisLib::_TempStringImplT<*>{
+	preview		([$e.m_pBuffer])
+	stringview	([$e.m_pBuffer])
+	children
+	(
+		#([actual members]: [$e,!] , #array( expr: $e.m_pBuffer[$i], size: $e.m_Length))
+	)
+}
+
+BazisLib::FilePath{
+	preview		([$e.m_pBuffer])
+	stringview	([$e.m_pBuffer])
+	children
+	(
+		#([actual members]: [$e,!] , #array( expr: $e.m_pBuffer[$i], size: $e.m_Length))
+	)
+}

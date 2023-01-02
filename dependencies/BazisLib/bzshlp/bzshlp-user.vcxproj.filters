@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{160B7109-5277-4104-BD74-27FCC4A8E236}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{0F68613F-273D-444B-96BF-AA1277E4776B}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Win32">
+      <UniqueIdentifier>{3f87d9e7-fa8c-410e-9985-24f29aa23f0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Win32">
+      <UniqueIdentifier>{06a740fc-7dc0-4ade-8525-4bb05663773b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WinKernel">
+      <UniqueIdentifier>{9f102c98-0d96-448f-a799-ad66c0057d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WinKernel\Cross-platform">
+      <UniqueIdentifier>{b19d2d79-066b-4b15-978b-5217e54236a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WinKernel\SCSI">
+      <UniqueIdentifier>{5d5ea13c-618c-4945-bcec-6a03274ed150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WinKernel">
+      <UniqueIdentifier>{df837f52-fcbb-480c-81db-06cbb7d42464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WinKernel\SCSI">
+      <UniqueIdentifier>{49d1a33f-0f5f-4079-969c-b02ce14c3024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MacOS">
+      <UniqueIdentifier>{f256978e-93ba-40b5-8e57-4f065bb02999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Resource Files">
+      <UniqueIdentifier>{7271A942-CE4E-4D1B-80FA-E6484C1073E7}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{7b2d3df6-8134-4244-815b-ad0b70561a7f}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="flags.mak" />
+    <None Include="Makefile" />
+    <None Include="debug__posix_.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release__posix_.mak">
+      <Filter>Make files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="alg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bzsdisk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bzsstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cmndef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="endian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HandleHolder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="i18n.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MBREmulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParsingLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ser_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="serializer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="smvec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="uidpool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\apicaller.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\BCD.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\bulkusb.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\bulkusbcmd.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\bzsdev.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\bzsreg.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\cmdexec.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\dblbuf.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\display.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\filemap.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\findproc.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\guid.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\HandleHolder.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\i18n.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\LNGManager.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\memdbg.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\netfilter.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\pepatch.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\process.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\registry.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\services.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\stdafx.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\volmgr.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\WMI.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\wow64.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\bus.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\bzsddk.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\cdrom.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\cmndef.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\commondef.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\crossplatform.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\devapi.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\device.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\DeviceEnumerator.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\driver.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\guid.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\ioctldbg.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\iodevice.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\iofilter.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\irp.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\irpqueue.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\pnpdevice.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\registry.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\stdafx.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\storage.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\storfilter.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\trace.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\undoc.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\VisualDDKHelpers.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\volume.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\WorkerThread.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\SCSI\BasicBlockDevice.h">
+      <Filter>Header Files\WinKernel\SCSI</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\SCSI\VirtualSCSIBus.h">
+      <Filter>Header Files\WinKernel\SCSI</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\SCSI\VirtualSCSICdrom.h">
+      <Filter>Header Files\WinKernel\SCSI</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\SCSI\VirtualSCSIPDO.h">
+      <Filter>Header Files\WinKernel\SCSI</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\SCSI\scsidev.h">
+      <Filter>Header Files\WinKernel\SCSI</Filter>
+    </ClInclude>
+    <ClInclude Include="UserModeWorkerBackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MacOS\CFHandle.h">
+      <Filter>Header Files\MacOS</Filter>
+    </ClInclude>
+    <ClInclude Include="MacOS\CFPluginWrapper.h">
+      <Filter>Header Files\MacOS</Filter>
+    </ClInclude>
+    <ClInclude Include="MacOS\DeviceEnumerator.h">
+      <Filter>Header Files\MacOS</Filter>
+    </ClInclude>
+    <ClInclude Include="MacOS\IOObject.h">
+      <Filter>Header Files\MacOS</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\process.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="WinKernel\AlertableQueue.h">
+      <Filter>Header Files\WinKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\ResourceReader.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32\RegistrySerializer.h">
+      <Filter>Header Files\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="ratecalc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySerializer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MacOS\IOService.h">
+      <Filter>Header Files\MacOS</Filter>
+    </ClInclude>
+    <ClInclude Include="MacOS\IOConnect.h">
+      <Filter>Header Files\MacOS</Filter>
+    </ClInclude>
+    <ClInclude Include="MacOS\IORegistry.h">
+      <Filter>Header Files\MacOS</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\BCD.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\bulkusb.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\bzsdev.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\bzsreg.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\cmdexec.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\display.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\i18n.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\LNGManager.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\services.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\volmgr.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\WMI.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32\wow64.cpp">
+      <Filter>Source Files\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\bus.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\cdrom.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\devapi.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\device.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\DeviceEnumerator.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\driver.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\initguid.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\ioctldbg.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\iodevice.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\iofilter.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\irpqueue.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\pnpdevice.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\storage.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\storfilter.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\volume.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\crossplatform\crossvol.cpp">
+      <Filter>Source Files\WinKernel\Cross-platform</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\SCSI\BasicBlockDevice.cpp">
+      <Filter>Source Files\WinKernel\SCSI</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\SCSI\VirtualSCSICdrom.cpp">
+      <Filter>Source Files\WinKernel\SCSI</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\SCSI\VirtualSCSIPDO.cpp">
+      <Filter>Source Files\WinKernel\SCSI</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\filter.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="UserModeWorkerBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\process.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="WinKernel\AlertableQueue.cpp">
+      <Filter>Source Files\WinKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="ratecalc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

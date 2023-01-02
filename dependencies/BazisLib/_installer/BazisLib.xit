@@ -1,0 +1,19 @@
+;Predefined directory prefixes are $PROGRAMFILES$, $WINDIR$,
+;$SYSDIR$, $WINDRIVE$, $CURDIR$, $TEMPDIR$
+
+$general
+Readme  	readme.txt
+
+Defaultdir	$WINDRIVE$\OpenSource\BazisLib
+Options 	SelectDir
+Components	main
+RootComps	main
+Version		1.00
+UID		{AC904FEB-5CD6-4c56-8827-2AFD1CD8DBF1}
+Name		BazisLib
+
+$main
+file		main.xic
+options		default
+;requires	 none
+

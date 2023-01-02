@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Allocator.cpp" />
+    <ClCompile Include="BcCoroutine.cpp" />
+    <ClCompile Include="Cpp20CoroutineFill.cpp" />
+    <ClCompile Include="CrtFill.cpp" />
+    <ClCompile Include="DisasmWnd.cpp" />
+    <ClCompile Include="DriverEntry.cpp" />
+    <ClCompile Include="Glyph.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MemReadCor.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="ProcAddress.cpp" />
+    <ClCompile Include="Ps2Keyb.cpp" />
+    <ClCompile Include="Root.cpp" />
+    <ClCompile Include="SymbolFile.cpp" />
+    <ClCompile Include="Symbols.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Wnd.cpp" />
+    <ClCompile Include="X86Step.cpp" />
+    <ClCompile Include="QuickJS\cutils.c">
+      <Filter>QuickJS</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickJS\libbf.c">
+      <Filter>QuickJS</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickJS\libregexp.c">
+      <Filter>QuickJS</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickJS\libunicode.c">
+      <Filter>QuickJS</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickJS\quickjs.c">
+      <Filter>QuickJS</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickJS\quickjs-libc.c">
+      <Filter>QuickJS</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickJSCppInterface.cpp" />
+    <ClCompile Include="Cmd_QuestionMark.cpp" />
+    <ClCompile Include="Cmd.cpp" />
+    <ClCompile Include="Cmd_ADDR.cpp" />
+    <ClCompile Include="Cmd_BC.cpp" />
+    <ClCompile Include="Cmd_BD.cpp" />
+    <ClCompile Include="Cmd_BE.cpp" />
+    <ClCompile Include="Cmd_BL.cpp" />
+    <ClCompile Include="Cmd_BPX.cpp" />
+    <ClCompile Include="Cmd_D.cpp" />
+    <ClCompile Include="Cmd_E.cpp" />
+    <ClCompile Include="Cmd_P.cpp" />
+    <ClCompile Include="Cmd_PAGEIN.cpp" />
+    <ClCompile Include="Cmd_PROC.cpp" />
+    <ClCompile Include="Cmd_R.cpp" />
+    <ClCompile Include="Cmd_STACK.cpp" />
+    <ClCompile Include="Cmd_T.cpp" />
+    <ClCompile Include="Cmd_U.cpp" />
+    <ClCompile Include="Cmd_VER.cpp" />
+    <ClCompile Include="Cmd_X.cpp" />
+    <ClCompile Include="InputLine.cpp" />
+    <ClCompile Include="LogWnd.cpp" />
+    <ClCompile Include="QuickJSCInterface.c" />
+    <ClCompile Include="RegsWnd.cpp" />
+    <ClCompile Include="CodeWnd.cpp" />
+    <ClCompile Include="Cmd_KL.cpp" />
+    <ClCompile Include="Cmd_MOD.cpp" />
+    <ClCompile Include="Cmd_LINES_WIDTH.cpp" />
+    <ClCompile Include="Cmd_WR_WD_WS.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Allocator.h" />
+    <ClInclude Include="BcCoroutine.h" />
+    <ClInclude Include="BugChecker.h" />
+    <ClInclude Include="Cpp20CoroutineFill.h" />
+    <ClInclude Include="CrtFill.h" />
+    <ClInclude Include="DbgKd.h" />
+    <ClInclude Include="DisasmWnd.h" />
+    <ClInclude Include="FunctionPatch.h" />
+    <ClInclude Include="Glyph.h" />
+    <ClInclude Include="Ioctl.h" />
+    <ClInclude Include="KdCom.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="MemReadCor.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="ProcAddress.h" />
+    <ClInclude Include="Ps2Keyb.h" />
+    <ClInclude Include="Root.h" />
+    <ClInclude Include="SymbolFile.h" />
+    <ClInclude Include="Symbols.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Wnd.h" />
+    <ClInclude Include="X86Step.h" />
+    <ClInclude Include="QuickJS\cutils.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\libregexp.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\libregexp-opcode.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\libunicode.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\libunicode-table.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\list.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\quickjs.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\quickjs-atom.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\quickjs-jsx.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\quickjs-libc.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\quickjs-opcode.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\libbf.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJS\quickjs-version.h">
+      <Filter>QuickJS</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickJSDeclFill.h" />
+    <ClInclude Include="QuickJSCppInterface.h" />
+    <ClInclude Include="QuickJSCInterface.h" />
+    <ClInclude Include="Cmd.h" />
+    <ClInclude Include="InputLine.h" />
+    <ClInclude Include="LogWnd.h" />
+    <ClInclude Include="RegsWnd.h" />
+    <ClInclude Include="CodeWnd.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="AsmForAmd64.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="QuickJS">
+      <UniqueIdentifier>{77943104-1dcf-49a8-babf-bc37844056e1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

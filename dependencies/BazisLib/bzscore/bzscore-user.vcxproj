@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-UserMode|Win32">
+      <Configuration>Debug-UserMode</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-UserMode|x64">
+      <Configuration>Debug-UserMode</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-UserMode|Win32">
+      <Configuration>Release-UserMode</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-UserMode|x64">
+      <Configuration>Release-UserMode</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2D88C48F-D86A-4456-85E4-4BB5AB2D0135}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>bzscore</RootNamespace>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="debug__kext_.mak" />
+    <None Include="debug__posix_.mak" />
+    <None Include="kext.mak" />
+    <None Include="Makefile" />
+    <None Include="release__posix_.mak" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assert.h" />
+    <ClInclude Include="atomic.h" />
+    <ClInclude Include="autofile.h" />
+    <ClInclude Include="autolock.h" />
+    <ClInclude Include="bzscore.h" />
+    <ClInclude Include="cfgstore.h" />
+    <ClInclude Include="cmndef.h" />
+    <ClInclude Include="datetime.h" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="fileflags.h" />
+    <ClInclude Include="KEXT\atomic.h" />
+    <ClInclude Include="KEXT\cfgstore.h" />
+    <ClInclude Include="KEXT\cmndef.h" />
+    <ClInclude Include="KEXT\datetime.h" />
+    <ClInclude Include="KEXT\file.h" />
+    <ClInclude Include="KEXT\SmartPointers.h" />
+    <ClInclude Include="KEXT\socket.h" />
+    <ClInclude Include="KEXT\sync.h" />
+    <ClInclude Include="KEXT\thread.h" />
+    <ClInclude Include="KEXT\unicode.h" />
+    <ClInclude Include="minmax.h" />
+    <ClInclude Include="objcoll.h" />
+    <ClInclude Include="objmgr.h" />
+    <ClInclude Include="path.h" />
+    <ClInclude Include="platform.h" />
+    <ClInclude Include="Posix\atomic.h" />
+    <ClInclude Include="Posix\cfgstore.h" />
+    <ClInclude Include="Posix\datetime.h" />
+    <ClInclude Include="Posix\DNS.h" />
+    <ClInclude Include="Posix\file.h" />
+    <ClInclude Include="Posix\guid_compat.h" />
+    <ClInclude Include="Posix\InternetAddress.h" />
+    <ClInclude Include="Posix\path.h" />
+    <ClInclude Include="Posix\status_defs.h" />
+    <ClInclude Include="Posix\stdafx.h" />
+    <ClInclude Include="Posix\sync.h" />
+    <ClInclude Include="Posix\SyncImpl.h" />
+    <ClInclude Include="Posix\thread.h" />
+    <ClInclude Include="Posix\UnixFileModes.h" />
+    <ClInclude Include="SCSI.h" />
+    <ClInclude Include="socket_common.h" />
+    <ClInclude Include="splitstr.h" />
+    <ClInclude Include="status.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="strbase.h" />
+    <ClInclude Include="strfast.h" />
+    <ClInclude Include="string.h" />
+    <ClInclude Include="strop.h" />
+    <ClInclude Include="sync.h" />
+    <ClInclude Include="tchar_compat.h" />
+    <ClInclude Include="thread.h" />
+    <ClInclude Include="Win32\atomic.h" />
+    <ClInclude Include="Win32\cfgstore.h" />
+    <ClInclude Include="Win32\datetime.h" />
+    <ClInclude Include="Win32\file.h" />
+    <ClInclude Include="Win32\path.h" />
+    <ClInclude Include="Win32\registry.h" />
+    <ClInclude Include="Win32\socket.h" />
+    <ClInclude Include="Win32\status_defs.h" />
+    <ClInclude Include="Win32\stdafx.h" />
+    <ClInclude Include="Win32\sync.h" />
+    <ClInclude Include="Win32\thread.h" />
+    <ClInclude Include="Win32\tls.h" />
+    <ClInclude Include="WinKernel\atomic.h" />
+    <ClInclude Include="WinKernel\datetime.h" />
+    <ClInclude Include="WinKernel\file.h" />
+    <ClInclude Include="WinKernel\init.h" />
+    <ClInclude Include="WinKernel\kmemory.h" />
+    <ClInclude Include="WinKernel\memdbg.h" />
+    <ClInclude Include="WinKernel\ntstatusdbg.h" />
+    <ClInclude Include="WinKernel\registry.h" />
+    <ClInclude Include="WinKernel\status_defs.h" />
+    <ClInclude Include="WinKernel\sync.h" />
+    <ClInclude Include="WinKernel\thread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="KEXT\kext_socket.cpp" />
+    <ClCompile Include="KEXT\kext_unicode.cpp" />
+    <ClCompile Include="Posix\DNS.cpp" />
+    <ClCompile Include="Posix\kext.cpp" />
+    <ClCompile Include="Posix\posix_path.cpp" />
+    <ClCompile Include="Posix\posix_status.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Win32\path.cpp" />
+    <ClCompile Include="Win32\registry_win32.cpp" />
+    <ClCompile Include="Win32\security.cpp" />
+    <ClCompile Include="Win32\win32_socket.cpp" />
+    <ClCompile Include="Win32\win32_string.cpp" />
+    <ClCompile Include="Win32\win32_status.cpp" />
+    <ClCompile Include="WinKernel\init.cpp" />
+    <ClCompile Include="WinKernel\memdbg.cpp" />
+    <ClCompile Include="WinKernel\ntstatus.cpp" />
+    <ClCompile Include="WinKernel\ntstatusdbg.cpp" />
+    <ClCompile Include="WinKernel\registry_nt.cpp" />
+    <ClCompile Include="WinKernel\stlsup.cpp" />
+    <ClCompile Include="WinKernel\ddk_string.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

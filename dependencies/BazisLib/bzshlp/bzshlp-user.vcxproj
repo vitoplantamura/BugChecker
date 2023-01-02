@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-UserMode|Win32">
+      <Configuration>Debug-UserMode</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-UserMode|x64">
+      <Configuration>Debug-UserMode</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-UserMode|Win32">
+      <Configuration>Release-UserMode</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-UserMode|x64">
+      <Configuration>Release-UserMode</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0EAD365B-30F9-4C98-A47C-14E8A77ABCF7}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>bzshlp</RootNamespace>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|Win32'">
+    <IncludePath>..\..;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|Win32'">
+    <IncludePath>..\..;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|x64'">
+    <IncludePath>..\..;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|x64'">
+    <IncludePath>..\..;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-UserMode|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-UserMode|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="debug__posix_.mak" />
+    <None Include="flags.mak" />
+    <None Include="Makefile" />
+    <None Include="release__posix_.mak" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="alg.h" />
+    <ClInclude Include="BinarySerializer.h" />
+    <ClInclude Include="bzsdisk.h" />
+    <ClInclude Include="bzsstream.h" />
+    <ClInclude Include="cmndef.h" />
+    <ClInclude Include="endian.h" />
+    <ClInclude Include="filters.h" />
+    <ClInclude Include="HandleHolder.h" />
+    <ClInclude Include="i18n.h" />
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="MacOS\CFHandle.h" />
+    <ClInclude Include="MacOS\CFPluginWrapper.h" />
+    <ClInclude Include="MacOS\DeviceEnumerator.h" />
+    <ClInclude Include="MacOS\IOConnect.h" />
+    <ClInclude Include="MacOS\IOObject.h" />
+    <ClInclude Include="MacOS\IORegistry.h" />
+    <ClInclude Include="MacOS\IOService.h" />
+    <ClInclude Include="MBREmulator.h" />
+    <ClInclude Include="memfile.h" />
+    <ClInclude Include="ParsingLogger.h" />
+    <ClInclude Include="ratecalc.h" />
+    <ClInclude Include="serializer.h" />
+    <ClInclude Include="ser_def.h" />
+    <ClInclude Include="smvec.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="textfile.h" />
+    <ClInclude Include="textser.h" />
+    <ClInclude Include="uidpool.h" />
+    <ClInclude Include="UserModeWorkerBackend.h" />
+    <ClInclude Include="Win32\apicaller.h" />
+    <ClInclude Include="Win32\BCD.h" />
+    <ClInclude Include="Win32\bulkusb.h" />
+    <ClInclude Include="Win32\bulkusbcmd.h" />
+    <ClInclude Include="Win32\bzsdev.h" />
+    <ClInclude Include="Win32\bzsreg.h" />
+    <ClInclude Include="Win32\cmdexec.h" />
+    <ClInclude Include="Win32\dblbuf.h" />
+    <ClInclude Include="Win32\display.h" />
+    <ClInclude Include="Win32\filemap.h" />
+    <ClInclude Include="Win32\findproc.h" />
+    <ClInclude Include="Win32\guid.h" />
+    <ClInclude Include="Win32\HandleHolder.h" />
+    <ClInclude Include="Win32\i18n.h" />
+    <ClInclude Include="Win32\LNGManager.h" />
+    <ClInclude Include="Win32\memdbg.h" />
+    <ClInclude Include="Win32\netfilter.h" />
+    <ClInclude Include="Win32\pepatch.h" />
+    <ClInclude Include="Win32\process.h" />
+    <ClInclude Include="Win32\registry.h" />
+    <ClInclude Include="Win32\RegistrySerializer.h" />
+    <ClInclude Include="Win32\ResourceReader.h" />
+    <ClInclude Include="Win32\services.h" />
+    <ClInclude Include="Win32\stdafx.h" />
+    <ClInclude Include="Win32\volmgr.h" />
+    <ClInclude Include="Win32\WMI.h" />
+    <ClInclude Include="Win32\wow64.h" />
+    <ClInclude Include="WinKernel\AlertableQueue.h" />
+    <ClInclude Include="WinKernel\bus.h" />
+    <ClInclude Include="WinKernel\bzsddk.h" />
+    <ClInclude Include="WinKernel\cdrom.h" />
+    <ClInclude Include="WinKernel\cmndef.h" />
+    <ClInclude Include="WinKernel\commondef.h" />
+    <ClInclude Include="WinKernel\crossplatform.h" />
+    <ClInclude Include="WinKernel\devapi.h" />
+    <ClInclude Include="WinKernel\device.h" />
+    <ClInclude Include="WinKernel\DeviceEnumerator.h" />
+    <ClInclude Include="WinKernel\driver.h" />
+    <ClInclude Include="WinKernel\guid.h" />
+    <ClInclude Include="WinKernel\ioctldbg.h" />
+    <ClInclude Include="WinKernel\iodevice.h" />
+    <ClInclude Include="WinKernel\iofilter.h" />
+    <ClInclude Include="WinKernel\irp.h" />
+    <ClInclude Include="WinKernel\irpqueue.h" />
+    <ClInclude Include="WinKernel\pnpdevice.h" />
+    <ClInclude Include="WinKernel\process.h" />
+    <ClInclude Include="WinKernel\registry.h" />
+    <ClInclude Include="WinKernel\SCSI\BasicBlockDevice.h" />
+    <ClInclude Include="WinKernel\SCSI\scsidev.h" />
+    <ClInclude Include="WinKernel\SCSI\VirtualSCSIBus.h" />
+    <ClInclude Include="WinKernel\SCSI\VirtualSCSICdrom.h" />
+    <ClInclude Include="WinKernel\SCSI\VirtualSCSIPDO.h" />
+    <ClInclude Include="WinKernel\stdafx.h" />
+    <ClInclude Include="WinKernel\storage.h" />
+    <ClInclude Include="WinKernel\storfilter.h" />
+    <ClInclude Include="WinKernel\trace.h" />
+    <ClInclude Include="WinKernel\undoc.h" />
+    <ClInclude Include="WinKernel\VisualDDKHelpers.h" />
+    <ClInclude Include="WinKernel\volume.h" />
+    <ClInclude Include="WinKernel\WorkerThread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ratecalc.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="UserModeWorkerBackend.cpp" />
+    <ClCompile Include="Win32\BCD.cpp" />
+    <ClCompile Include="Win32\bulkusb.cpp" />
+    <ClCompile Include="Win32\bzsdev.cpp" />
+    <ClCompile Include="Win32\bzsreg.cpp" />
+    <ClCompile Include="Win32\cmdexec.cpp" />
+    <ClCompile Include="Win32\display.cpp" />
+    <ClCompile Include="Win32\i18n.cpp" />
+    <ClCompile Include="Win32\LNGManager.cpp" />
+    <ClCompile Include="Win32\services.cpp" />
+    <ClCompile Include="Win32\volmgr.cpp" />
+    <ClCompile Include="Win32\WMI.cpp" />
+    <ClCompile Include="Win32\wow64.cpp" />
+    <ClCompile Include="WinKernel\AlertableQueue.cpp" />
+    <ClCompile Include="WinKernel\bus.cpp" />
+    <ClCompile Include="WinKernel\cdrom.cpp" />
+    <ClCompile Include="WinKernel\crossplatform\crossvol.cpp" />
+    <ClCompile Include="WinKernel\devapi.cpp" />
+    <ClCompile Include="WinKernel\device.cpp" />
+    <ClCompile Include="WinKernel\DeviceEnumerator.cpp" />
+    <ClCompile Include="WinKernel\driver.cpp" />
+    <ClCompile Include="WinKernel\filter.cpp" />
+    <ClCompile Include="WinKernel\initguid.cpp" />
+    <ClCompile Include="WinKernel\ioctldbg.cpp" />
+    <ClCompile Include="WinKernel\iodevice.cpp" />
+    <ClCompile Include="WinKernel\iofilter.cpp" />
+    <ClCompile Include="WinKernel\irpqueue.cpp" />
+    <ClCompile Include="WinKernel\pnpdevice.cpp" />
+    <ClCompile Include="WinKernel\process.cpp" />
+    <ClCompile Include="WinKernel\SCSI\BasicBlockDevice.cpp" />
+    <ClCompile Include="WinKernel\SCSI\VirtualSCSICdrom.cpp" />
+    <ClCompile Include="WinKernel\SCSI\VirtualSCSIPDO.cpp" />
+    <ClCompile Include="WinKernel\storage.cpp" />
+    <ClCompile Include="WinKernel\storfilter.cpp" />
+    <ClCompile Include="WinKernel\volume.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

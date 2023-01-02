@@ -1,0 +1,15 @@
+//
+// === new. ===
+//
+// This empty file is required to compile EASTL. The folder in which this file is saved must
+// be put earlier in the include path of the BugChecker project. If BugChecker is compiled
+// without this file, the EASTL header files would include the "new." file from the WDK,
+// preventing the project from compiling.
+//
+// This dirty hack is required in an effort to modify the original sources of EASTL as little as
+// possible...
+//
+// The only change required in the sources of EASTL to be compiled with the WDK for Windows XP
+// and therefore with BugChecker, is #undefining the "EA_COMPILER_HAS_INTTYPES" identifier in the
+// "eabase.h" file.
+//

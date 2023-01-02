@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (KEXT)|Win32">
+      <Configuration>Debug (KEXT)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0AE75488-B1DD-4845-9BCE-9E72F64E8D79}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug (KEXT)|Win32'">
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build TestMacDriver-Release.vgdbsettings</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean TestMacDriver-Release.vgdbsettings</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild TestMacDriver-Release.vgdbsettings</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>__NO_MATH_INLINES;__STDC_HOSTED__;__APPLE__;__LDBL_HAS_QUIET_NAN__;__DYNAMIC__;__MMX__;__FLT_HAS_DENORM__;__DBL_HAS_INFINITY__;OBJC_NEW_PROPERTIES;__LDBL_HAS_DENORM__;__SSE2_MATH__;__amd64;__tune_core2__;__x86_64;__LP64__;__DBL_HAS_QUIET_NAN__;__DBL_HAS_DENORM__;__NO_INLINE__;__SSE_MATH__;__k8;__x86_64__;__FLT_HAS_QUIET_NAN__;__FLT_HAS_INFINITY__;__LITTLE_ENDIAN__;__CONSTANT_CFSTRINGS__;__k8__;__BLOCKS__;__SSE__;__MACH__;__amd64__;__SSP__;_LP64;__GNUC_PATCHLEVEL__;__LDBL_HAS_INFINITY__;__SSE2__;__STDC__;__llvm__;__GNUC_GNU_INLINE__;__SSE3__;NDEBUG;RELEASE;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0000\include;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0001\include;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0002\include;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0003\Frameworks;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0004\Frameworks;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeOutput>E:\PROJECTS\sysprogs\VisualGDB\VisualGDB\bin\Debug\UseStartDebugWithGDBCommand.exe</NMakeOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (KEXT)|Win32'">
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeOutput>$(ProjectDir)TestMacDriver-Debug (KEXT).vgdbsettings</NMakeOutput>
+    <NMakeIncludeSearchPath>C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0000\include;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0001\include;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0002\include;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0003\Frameworks;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0004\Frameworks;C:\Users\bazis\AppData\Local\VisualGDB\RemoteSourceCache\sysmacbook\0003\Frameworks\Kernel.framework\Versions\Current\Headers;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug (KEXT).h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug__KEXT_;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="KEXT.c" />
+    <ClCompile Include="TestMacDriver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="debug__kext_.mak" />
+    <None Include="Makefile" />
+    <None Include="TestMacDriver-plist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestMacDriver.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
