@@ -106,6 +106,8 @@ VOID LogWnd::AddString(const CHAR* psz, BOOLEAN doAppend /*= FALSE*/, BOOLEAN re
 VOID LogWnd::Clear()
 {
 	contents.clear();
+	allocSize = 0;
+	Home();
 }
 
 eastl::string LogWnd::GetLineToDraw(ULONG index)
