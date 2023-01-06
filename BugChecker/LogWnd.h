@@ -10,6 +10,7 @@ public:
 
 	VOID AddUserCmd(const CHAR* psz);
 	VOID AddString(const CHAR* psz, BOOLEAN doAppend = FALSE, BOOLEAN refreshUi = FALSE);
+	VOID Clear();
 
 	VOID GoToEnd();
 

@@ -186,6 +186,7 @@
     <ClCompile Include="Cmd_BE.cpp" />
     <ClCompile Include="Cmd_BL.cpp" />
     <ClCompile Include="Cmd_BPX.cpp" />
+    <ClCompile Include="Cmd_CLS.cpp" />
     <ClCompile Include="Cmd_D.cpp" />
     <ClCompile Include="Cmd_E.cpp" />
     <ClCompile Include="Cmd_KL.cpp" />
