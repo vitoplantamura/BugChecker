@@ -105,7 +105,7 @@ VOID LogWnd::AddString(const CHAR* psz, BOOLEAN doAppend /*= FALSE*/, BOOLEAN re
 
 VOID LogWnd::Clear()
 {
-	contents.clear();
+	eastl::vector<eastl::string>().swap(contents);
 	allocSize = 0;
 	Home();
 }
