@@ -4,6 +4,9 @@
 #include "Root.h"
 #include "Utils.h"
 
+BYTE DisasmWnd::bldClr = 0x70;
+BYTE DisasmWnd::rvrClr = 0x71;
+
 BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jumpDest, LONG navigate /*= 0*/) noexcept
 {
 	current32bitCompat = is32bitCompat;
@@ -231,7 +234,7 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		CHAR line[512];
 
 		if (runtimeAddress == pc)
-			::strcpy(line, "\n71");
+			sprintf(line, "\n%02x", rvrClr);
 		else
 			::strcpy(line, !hasBp ? "\n07" : "\n0B");
 
@@ -296,10 +299,10 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 			if (ptr)
 			{
 				if (jumpDest == -1)
-					::strcpy(ptr, "\n70(NO JUMP)");
+					sprintf(ptr, "\n%02x(NO JUMP)", bldClr);
 				else
 				{
-					::strcpy(ptr + 1, "\n70(JUMP X)");
+					sprintf(ptr + 1, "\n%02x(JUMP X)", bldClr);
 					*(ptr + 10) = jumpDest < pc ? 0x18 : 0x19; // up/down arrow.
 				}
 			}
