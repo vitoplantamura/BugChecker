@@ -5,6 +5,8 @@
 
 #include <EASTL/unique_ptr.h>
 
+BYTE Wnd::hlpClr = 0x30; // default help bar color
+
 void Wnd::DrawAll_Start()
 {
 	// check if the dimension of the screen changed.
@@ -146,7 +148,7 @@ void Wnd::DrawAll_End()
 			else if (y == Root::I->WndHeight - 2)
 			{
 				if (c == 0x0720)
-					c = 0x3720;
+					c = (hlpClr << 8) + (c & 0xff);
 			}
 			else if (y == Root::I->RegsDisasmDivLineY || y == Root::I->DisasmCodeDivLineY || y == Root::I->CodeLogDivLineY)
 			{
@@ -190,9 +192,9 @@ void Wnd::DrawAll_End()
 		helpText = "     ESC=switch windows   F1=evaluate script";
 	}
 
-	DrawString(helpText.c_str(), 1, Root::I->WndHeight - 2, 0x30, Root::I->WndWidth - 2);
+	DrawString(helpText.c_str(), 1, Root::I->WndHeight - 2, hlpClr, Root::I->WndWidth - 2);
 
-	DrawString(Root::I->CurrentImageFileName.c_str(), Root::I->WndWidth - Root::I->CurrentImageFileName.size() - 2, Root::I->WndHeight - 2, 0x30);
+	DrawString(Root::I->CurrentImageFileName.c_str(), Root::I->WndWidth - Root::I->CurrentImageFileName.size() - 2, Root::I->WndHeight - 2, hlpClr);
 
 	// compose and draw the entire IRQL + "posInModules" string.
 

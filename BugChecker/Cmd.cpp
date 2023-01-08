@@ -513,6 +513,89 @@ eastl::vector<ULONG> Cmd::ParseListOfDecsArgs(const CHAR* cmdId, const eastl::st
 	return nums;
 }
 
+eastl::vector<BYTE> Cmd::ParseListOfBytesArgs(const CHAR* cmdId, const eastl::string& cmd, ULONG size)
+{
+	eastl::vector<BYTE> bytes;
+
+	auto argsCmd = TokenizeArgs(cmd, cmdId);
+
+	if (argsCmd.size() < 2)
+	{
+		Print("Too few arguments.");
+		return eastl::vector<BYTE>();
+	}
+	else if (argsCmd.size() > 2)
+	{
+		Print("Too many arguments.");
+		return eastl::vector<BYTE>();
+	}
+
+	auto argsStr = TokenizeStr(argsCmd[1], " ");
+
+	if (argsStr.size() == 0)
+	{
+		Print("Syntax error.");
+		return eastl::vector<BYTE>();
+	}
+
+	BOOLEAN all = FALSE;
+
+	for (int i = 0; i < argsStr.size(); i++)
+	{
+		auto& arg = argsStr[i];
+
+		if (arg.length() > 2)
+		{
+			Print("One or more arguments are out of range.");
+			return eastl::vector<BYTE>();
+		}
+		else if (arg == "*")
+		{
+			all = TRUE;
+		}
+		else
+		{
+			BOOLEAN byte = FALSE;
+			for (CHAR c : arg)
+			{
+				if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || c >= 'a' && c <= 'f')
+				{
+					byte = TRUE;
+				}
+				else
+				{
+					byte = FALSE;
+					break;
+				}
+			}
+
+			if (!byte)
+			{
+				Print("Invalid argument.");
+				return eastl::vector<BYTE>();
+			}
+
+			BYTE n = (BYTE)::BC_strtoui64(arg.c_str(), NULL, 16);
+
+			bytes.push_back(n);
+		}
+	}
+
+	if (all)
+	{
+		if (bytes.size())
+		{
+			Print("Specify * or a list of indexes, not both.");
+			return eastl::vector<BYTE>();
+		}
+
+		for (BYTE i = 0; i < size; i++)
+			bytes.push_back(i);
+	}
+
+	return bytes;
+}
+
 BcCoroutine Cmd::ScanStackForRets(BOOLEAN& res, eastl::vector<eastl::pair<ULONG64, ULONG64>>& addrs, BOOLEAN& is64, BYTE* context, BOOLEAN is32bitCompat, LONG depth) noexcept
 {
 	res = FALSE;

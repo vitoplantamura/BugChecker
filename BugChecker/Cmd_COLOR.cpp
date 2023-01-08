@@ -23,13 +23,16 @@ public:
 		}
 		else if (args.size() == 2)
 		{
-			auto colors = ParseListOfDecsArgs("COLOR", params.cmd, 6);
+			auto colors = ParseListOfBytesArgs("COLOR", params.cmd, 6);
 			if (colors.size() != 5)
 			{
 				Print("Arguments number mismatch.");
 				co_return;
 			}
-			Print("TODO: set new display colors");
+			Print("TODO: This command is not fully  implemented");
+			Wnd::hlpClr = colors[3];
+			Wnd::DrawAll_End();
+			Wnd::DrawAll_Final();
 			co_return;
 		}
 		else {
