@@ -35,6 +35,7 @@ public:
 	ULONG posY = 0;
 
 	static BYTE hlpClr; // help bar color
+	static BYTE hrzClr; // title bar color
 
 	eastl::vector<eastl::string> contents;
 

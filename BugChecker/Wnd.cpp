@@ -6,6 +6,7 @@
 #include <EASTL/unique_ptr.h>
 
 BYTE Wnd::hlpClr = 0x30; // default help bar color
+BYTE Wnd::hrzClr = 0x02; // default title bar color
 
 void Wnd::DrawAll_Start()
 {
@@ -153,7 +154,7 @@ void Wnd::DrawAll_End()
 			else if (y == Root::I->RegsDisasmDivLineY || y == Root::I->DisasmCodeDivLineY || y == Root::I->CodeLogDivLineY)
 			{
 				if (c == 0x0720)
-					c = 0x02C4;
+					c = (hrzClr << 8) + 0xC4;
 			}
 
 			*p++ = c;
@@ -203,17 +204,17 @@ void Wnd::DrawAll_End()
 
 	if (Root::I->CodeLogDivLineY >= 0)
 	{
-		posClr = 0x02;
+		posClr = hrzClr;
 		posY = Root::I->CodeLogDivLineY;
 	}
 	else if (Root::I->DisasmCodeDivLineY >= 0)
 	{
-		posClr = 0x02;
+		posClr = hrzClr;
 		posY = Root::I->DisasmCodeDivLineY;
 	}
 	else if (Root::I->RegsDisasmDivLineY >= 0)
 	{
-		posClr = 0x02;
+		posClr = hrzClr;
 		posY = Root::I->RegsDisasmDivLineY;
 	}
 
@@ -257,7 +258,7 @@ void Wnd::DrawAll_End()
 
 	if (Root::I->RegsDisasmDivLineY >= 0)
 	{
-		htClr = 0x02;
+		htClr = hrzClr;
 		htY = Root::I->RegsDisasmDivLineY;
 	}
 	else if (Root::I->DisasmCodeDivLineY >= 0)

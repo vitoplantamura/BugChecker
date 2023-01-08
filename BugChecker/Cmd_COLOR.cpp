@@ -31,6 +31,7 @@ public:
 			}
 			Print("TODO: This command is not fully  implemented");
 			Wnd::hlpClr = colors[3];
+			Wnd::hrzClr = colors[4];
 			Wnd::DrawAll_End();
 			Wnd::DrawAll_Final();
 			co_return;
