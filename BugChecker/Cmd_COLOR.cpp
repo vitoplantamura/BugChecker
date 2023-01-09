@@ -17,7 +17,9 @@ public:
 
 		if (args.size() == 1)
 		{
-			Print("TODO: Display current colors");
+			char current_colors[30];
+			sprintf(current_colors, "Colors are %02X %02X %02X %02X %02X", Wnd::nrmClr, Wnd::bldClr, Wnd::rvrClr, Wnd::hlpClr, Wnd::hrzClr);
+			Print(current_colors);
 			co_return;
 		}
 		else if (args.size() == 2)
