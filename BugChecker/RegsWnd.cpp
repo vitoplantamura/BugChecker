@@ -59,7 +59,7 @@ VOID RegsWnd::DrawRegs(BYTE* context, BOOLEAN is32bitCompat)
 		line +=
 			(oldCtxValid && highlight ? "\n0B" : "") +
 			str +
-			+ "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + "   " +
+			"\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + "   " +
 			(!::strcmp(name, "R8") || !::strcmp(name, "R9") ? " " : "");
 	};
 
@@ -73,7 +73,7 @@ VOID RegsWnd::DrawRegs(BYTE* context, BOOLEAN is32bitCompat)
 		else
 			str += idUppercase + 32;
 
-		str += + "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + " ";
+		str += "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + " ";
 	};
 
 	auto drawFlags = [&](ULONG64 value, ULONG64 oldValue) {

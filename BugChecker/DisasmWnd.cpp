@@ -231,7 +231,7 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		CHAR line[512];
 
 		if (runtimeAddress == pc)
-			sprintf(line, "\n%02X", rvrClr);
+			sprintf(line, "\n%02X", Wnd::rvrClr);
 		else
 		{
 			if(!hasBp)
