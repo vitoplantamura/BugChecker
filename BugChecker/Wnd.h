@@ -35,6 +35,8 @@ public:
 	ULONG posY = 0;
 
 	static BYTE nrmClr; // normal color
+	static BYTE bldClr; // bold color
+	static BYTE rvrClr; // reverse color
 	static BYTE hlpClr; // help bar color
 	static BYTE hrzClr; // title bar color
 

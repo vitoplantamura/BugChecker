@@ -35,9 +35,6 @@ public:
 
 	BOOLEAN current32bitCompat = FALSE;
 
-	static BYTE bldClr;
-	static BYTE rvrClr;
-
 private:
 
 	ULONG64 firstAddressShown = 0;

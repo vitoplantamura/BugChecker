@@ -3,7 +3,6 @@
 #include "Cmd.h"
 #include "Root.h"
 
-
 class Cmd_COLOR : public Cmd
 {
 public:
@@ -30,8 +29,8 @@ public:
 				co_return;
 			}
 			Wnd::nrmClr = colors[0];
-			DisasmWnd::bldClr = colors[1];
-			DisasmWnd::rvrClr = colors[2];
+			Wnd::bldClr = colors[1];
+			Wnd::rvrClr = colors[2];
 			Wnd::hlpClr = colors[3];
 			Wnd::hrzClr = colors[4];
 			Wnd::DrawAll_End();

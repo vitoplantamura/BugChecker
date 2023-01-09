@@ -6,6 +6,8 @@
 #include <EASTL/unique_ptr.h>
 
 BYTE Wnd::nrmClr = 0x07; // default normal color
+BYTE Wnd::bldClr = 0x70; // default bold color
+BYTE Wnd::rvrClr = 0x71; // default reverse color
 BYTE Wnd::hlpClr = 0x30; // default help bar color
 BYTE Wnd::hrzClr = 0x02; // default title bar color
 
