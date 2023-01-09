@@ -234,7 +234,7 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		CHAR line[512];
 
 		if (runtimeAddress == pc)
-			sprintf(line, "\n%02x", rvrClr);
+			sprintf(line, "\n%02X", rvrClr);
 		else
 			::strcpy(line, !hasBp ? "\n07" : "\n0B");
 
@@ -299,10 +299,10 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 			if (ptr)
 			{
 				if (jumpDest == -1)
-					sprintf(ptr, "\n%02x(NO JUMP)", bldClr);
+					sprintf(ptr, "\n%02X(NO JUMP)", bldClr);
 				else
 				{
-					sprintf(ptr + 1, "\n%02x(JUMP X)", bldClr);
+					sprintf(ptr + 1, "\n%02X(JUMP X)", bldClr);
 					*(ptr + 10) = jumpDest < pc ? 0x18 : 0x19; // up/down arrow.
 				}
 			}
