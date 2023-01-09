@@ -236,7 +236,12 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		if (runtimeAddress == pc)
 			sprintf(line, "\n%02X", rvrClr);
 		else
-			::strcpy(line, !hasBp ? "\n07" : "\n0B");
+		{
+			if(!hasBp)
+				sprintf(line, "\n%02X", Wnd::nrmClr);
+			else
+				::strcpy(line, "\n0B");
+		}
 
 		// print current instruction pointer and instruction bytes.
 

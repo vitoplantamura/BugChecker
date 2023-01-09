@@ -29,7 +29,7 @@ public:
 				Print("Arguments number mismatch.");
 				co_return;
 			}
-			Print("TODO: This command is not fully  implemented");
+			Wnd::nrmClr = colors[0];
 			DisasmWnd::bldClr = colors[1];
 			DisasmWnd::rvrClr = colors[2];
 			Wnd::hlpClr = colors[3];

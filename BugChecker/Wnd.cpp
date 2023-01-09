@@ -5,6 +5,7 @@
 
 #include <EASTL/unique_ptr.h>
 
+BYTE Wnd::nrmClr = 0x07; // default normal color
 BYTE Wnd::hlpClr = 0x30; // default help bar color
 BYTE Wnd::hrzClr = 0x02; // default title bar color
 
@@ -106,12 +107,12 @@ void Wnd::Draw_InputLine(BOOLEAN eraseBackground)
 
 	if (eraseBackground)
 		for (ULONG x = 1; x <= Root::I->WndWidth - 2; x++)
-			Root::I->BackBuffer[y * Root::I->WndWidth + x] = 0x0720;
+			Root::I->BackBuffer[y * Root::I->WndWidth + x] = (nrmClr << 8) + 0x20;
 
 	DrawString(":", 1, y);
 
 	if (Root::I->InputLine.offset < Root::I->InputLine.text.size())
-		DrawString(Root::I->InputLine.text.c_str() + Root::I->InputLine.offset, 2, y, 0x07, Root::I->WndWidth - 3);
+		DrawString(Root::I->InputLine.text.c_str() + Root::I->InputLine.offset, 2, y, nrmClr, Root::I->WndWidth - 3);
 }
 
 void Wnd::DrawAll_End()
@@ -123,7 +124,7 @@ void Wnd::DrawAll_End()
 	for (ULONG y = 0; y < Root::I->WndHeight; y++)
 		for (ULONG x = 0; x < Root::I->WndWidth; x++)
 		{
-			USHORT c = 0x0720;
+			USHORT c = (nrmClr << 8) + 0x20;
 
 			if (x == 0 || x == Root::I->WndWidth - 1)
 				c = 0x03B3;
@@ -148,12 +149,12 @@ void Wnd::DrawAll_End()
 			}
 			else if (y == Root::I->WndHeight - 2)
 			{
-				if (c == 0x0720)
+				if (c == (nrmClr << 8) + 0x20)
 					c = (hlpClr << 8) + (c & 0xff);
 			}
 			else if (y == Root::I->RegsDisasmDivLineY || y == Root::I->DisasmCodeDivLineY || y == Root::I->CodeLogDivLineY)
 			{
-				if (c == 0x0720)
+				if (c == (nrmClr << 8) + 0x20)
 					c = (hrzClr << 8) + 0xC4;
 			}
 
@@ -310,7 +311,7 @@ void Wnd::Draw()
 		ULONG index = (y - destY0) + posY;
 		const CHAR* ptr = index < contents.size() ? GetLineToDraw(index).c_str() : NULL;
 
-		BYTE clr = 0x07;
+		BYTE clr = nrmClr;
 
 		if (ptr)
 			for (ULONG i = 0; i < posX; i++)
