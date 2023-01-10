@@ -35,8 +35,7 @@ public:
 			Wnd::rvrClr = colors[2];
 			Wnd::hlpClr = colors[3];
 			Wnd::hrzClr = colors[4];
-			Wnd::DrawAll_End();
-			Wnd::DrawAll_Final();
+			params.result = CmdParamsResult::RedrawUi;
 			co_return;
 		}
 		else {
