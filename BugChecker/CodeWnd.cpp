@@ -2,6 +2,7 @@
 
 #include "Root.h"
 #include "QuickJSCppInterface.h"
+#include "Utils.h"
 
 CodeWnd::CodeWnd()
 {
@@ -18,7 +19,7 @@ eastl::string CodeWnd::GetLineToDraw(ULONG index)
 	else if (index == posY + (destY1 - destY0) && index + 1 < contents.size())
 		c = 0x1F;
 
-	s = "\n02" + eastl::string(1, c) + "\n07" + s;
+	s = "\n" + Utils::HexToString(Wnd::hrzClr, sizeof(BYTE)) + eastl::string(1, c) + "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + s;
 
 	return s;
 }
@@ -108,7 +109,7 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			if (strIndex == -1 && i > 0 && text[i - 1] == '/')
 			{
 				exAdd(i - 1, -1);
-				text.insert(i - 1, "\n02");
+				text.insert(i - 1, "\n" + Utils::HexToString(Wnd::hrzClr, sizeof(BYTE)));
 				break;
 			}
 		}
@@ -124,7 +125,7 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			else if (text[strIndex] == c && !(slashCn % 2))
 			{
 				exAdd(strIndex, i);
-				text.insert(i + 1, "\n07");
+				text.insert(i + 1, "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)));
 				i += 3;
 				strIndex = -1;
 			}
@@ -175,7 +176,7 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 		{
 			if (!isIdChar(pos, -1) && !isIdChar(pos, keywordSize) && !exCheck(pos))
 			{
-				text.insert(pos + keywordSize, "\n07");
+				text.insert(pos + keywordSize, "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)));
 				text.insert(pos, "\n03");
 
 				pos += 3 + 3;
