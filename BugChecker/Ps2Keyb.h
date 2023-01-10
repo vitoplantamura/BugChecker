@@ -70,6 +70,7 @@ public:
 #define MACRO_SCANCODE_Slash  0x35		// /
 #define MACRO_SCANCODE_RShift 0x36		// Right Shift
 #define MACRO_SCANCODE_AstrP  0x37		// * Pad
+#define MACRO_SCANCODE_PrtSc  0x37		// Print Screen
 #define MACRO_SCANCODE_Alt    0x38		// Alt    
 #define MACRO_SCANCODE_Space  0x39		// Space  
 #define MACRO_SCANCODE_Caps   0x3A		// Caps   
