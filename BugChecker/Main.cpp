@@ -510,6 +510,7 @@ BcCoroutine Main::EntryPoint() noexcept
 			break;
 
 			case MACRO_SCANCODE_F5:
+			case MACRO_SCANCODE_PrtSc:
 			{
 				co_await BcAwaiter_Join{ ProcessCmd(
 					eastl::pair<eastl::string, Cmd*>("X", GetCmd("X")),
