@@ -17,9 +17,9 @@ public:
 
 		if (args.size() == 1)
 		{
-			char current_colors[30];
-			sprintf(current_colors, "Colors are %02X %02X %02X %02X %02X", Wnd::nrmClr, Wnd::bldClr, Wnd::rvrClr, Wnd::hlpClr, Wnd::hrzClr);
-			Print(current_colors);
+			CHAR currentColors[64];
+			sprintf(currentColors, "Colors are %02X %02X %02X %02X %02X", Wnd::nrmClr, Wnd::bldClr, Wnd::rvrClr, Wnd::hlpClr, Wnd::hrzClr);
+			Print(currentColors);
 			co_return;
 		}
 		else if (args.size() == 2)
