@@ -2,6 +2,7 @@
 
 #include "Cmd.h"
 #include "Root.h"
+#include "Utils.h"
 
 class Cmd_BL : public Cmd
 {
@@ -27,7 +28,7 @@ public:
 
 			CHAR buffer[64];
 			::sprintf(buffer, "%s%02d) %s ",
-				i == Root::I->BpHitIndex ? "\n0B" : "\n07",
+				i == Root::I->BpHitIndex ? "\n0B" : "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)),
 				i,
 				bp.skip ? "*" : " ");
 
