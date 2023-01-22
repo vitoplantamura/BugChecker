@@ -118,7 +118,7 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			if (strIndex == -1)
 			{
 				exAdd(i, -1);
-				text.insert(i, "\n04");
+				text.insert(i, Wnd::nrmClr != 0x04 ? "\n04" : "\n" + Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
 				i += 3;
 				strIndex = i;
 			}
@@ -177,7 +177,7 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			if (!isIdChar(pos, -1) && !isIdChar(pos, keywordSize) && !exCheck(pos))
 			{
 				text.insert(pos + keywordSize, "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)));
-				text.insert(pos, "\n03");
+				text.insert(pos, Wnd::nrmClr != 0x03 ? "\n03" : "\n" + Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
 
 				pos += 3 + 3;
 			}

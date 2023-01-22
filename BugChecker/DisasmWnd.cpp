@@ -237,16 +237,27 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 			if(!hasBp)
 				sprintf(line, "\n%02X", Wnd::nrmClr);
 			else
-				::strcpy(line, "\n0B");
+				sprintf(line, "\n%02X", Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr));
 		}
 
 		// print current instruction pointer and instruction bytes.
 
 		if (runtimeAddress == jumpDest)
 		{
-			::strcat(line, runtimeAddress == pc ? "\n7B" : "\n0B");
+			::strcat(line, "\n");
+			::strcat(line, runtimeAddress == pc ?
+				Utils::HexToString(Wnd::nrmClr != 0x7B ? 0x7B : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str()
+				:
+				Utils::HexToString(Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str());
 			::strcat(line, "===>");
-			::strcat(line, runtimeAddress == pc ? "\n71" : !hasBp ? "\n07" : "\n0B");
+			::strcat(line, "\n");
+			::strcat(line, runtimeAddress == pc ? 
+				Utils::HexToString(Wnd::nrmClr != 0x71 ? 0x71 : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str()
+				:
+				!hasBp ? 
+				Utils::HexToString(Wnd::nrmClr != 0x07 ? 0x07 : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str()
+				:
+				Utils::HexToString(Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str());
 		}
 		else
 			::sprintf(line + ::strlen(line), "%04X", ((CONTEXT*)context)->SegCs & 0xFFFF);
@@ -279,8 +290,11 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		}
 		else
 		{
-			symbolPrologue = runtimeAddress == pc ? "" : "\n0E";
-			symbolEpilogue = runtimeAddress == pc ? "" : !hasBp ? "\n07" : "\n0B";
+			symbolPrologue = runtimeAddress == pc ? "" : "\n" + (Wnd::nrmClr != 0x0E ? "0E" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
+			symbolEpilogue = runtimeAddress == pc ? "" : !hasBp ?
+				"\n" + (Wnd::nrmClr != 0x07 ? "07" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)))
+				:
+				"\n" + (Wnd::nrmClr != 0x0B ? "0B" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
 
 			auto len = ::strlen(line);
 
@@ -325,7 +339,14 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 					{
 						// add the line with the symbol name.
 
-						contents.push_back((runtimeAddress == pc ? "\n71" : !hasBp ? "\n07" : "\n0B") + moduleName + "!" + symName);
+						contents.push_back((runtimeAddress == pc ?
+							"\n" + (Wnd::nrmClr != 0x71 ? "71" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)))
+							:
+							!hasBp ?
+							"\n" + (Wnd::nrmClr != 0x07 ? "07" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)))
+							:
+							"\n" + (Wnd::nrmClr != 0x0B ? "0B" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE))))
+							+ moduleName + "!" + symName);
 
 						// add the address of the new line.
 

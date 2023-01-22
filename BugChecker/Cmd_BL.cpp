@@ -25,10 +25,10 @@ public:
 		for (int i = 0; i < Root::I->BreakPoints.size(); i++)
 		{
 			BreakPoint& bp = Root::I->BreakPoints[i];
-
+			
 			CHAR buffer[64];
-			::sprintf(buffer, "%s%02d) %s ",
-				i == Root::I->BpHitIndex ? "\n0B" : "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)),
+			::sprintf(buffer, "\n%02X%02d) %s ",
+				i == Root::I->BpHitIndex ? (Wnd::nrmClr != 0x0B? 0x0B : Utils::NegateByte(Wnd::nrmClr)) : (Wnd::nrmClr != 0x07 ? 0x07 : Utils::NegateByte(Wnd::nrmClr)),
 				i,
 				bp.skip ? "*" : " ");
 
