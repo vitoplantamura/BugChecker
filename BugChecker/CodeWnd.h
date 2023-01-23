@@ -28,6 +28,7 @@ public:
 	VOID PgDn();
 
 	BcCoroutine Eval(BYTE* context, ULONG contextLen, BOOLEAN is32bitCompat) noexcept;
+	VOID SyntaxColorAll();
 
 private:
 

@@ -602,3 +602,9 @@ BcCoroutine CodeWnd::Eval(BYTE* context, ULONG contextLen, BOOLEAN is32bitCompat
 
 	co_await BcAwaiter_Join{ QuickJSCppInterface::Eval(s.c_str(), context, contextLen, is32bitCompat, NULL, FALSE, FALSE) };
 }
+
+VOID CodeWnd::SyntaxColorAll()
+{
+	for (ULONG y = 0; y < contents.size(); y++)
+		SyntaxColor(y);
+}

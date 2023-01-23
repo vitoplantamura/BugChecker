@@ -48,6 +48,7 @@ public:
 			Wnd::rvrClr = colors.at(2);
 			Wnd::hlpClr = colors.at(3);
 			Wnd::hrzClr = colors.at(4);
+			Root::I->CodeWindow.SyntaxColorAll();
 			params.result = CmdParamsResult::RedrawUi;
 			co_return;
 		}
