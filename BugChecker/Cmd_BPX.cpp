@@ -10,7 +10,7 @@ public:
 
 	virtual const CHAR* GetId() { return "BPX"; }
 	virtual const CHAR* GetDesc() { return "Set a breakpoint on execution."; }
-	virtual const CHAR* GetSyntax() { return "BPX address [-t|-p] [WHEN js-expression]"; }
+	virtual const CHAR* GetSyntax() { return "BPX address [-t|-p|-kt thread|-kp process] [WHEN js-expression]"; }
 
 	virtual BcCoroutine Execute(CmdParams& params) noexcept
 	{
@@ -21,7 +21,7 @@ public:
 		ULONG64 ethread = 0;
 		eastl::string when = "";
 
-		auto args = TokenizeArgs(params.cmd, "BPX", "-t", "-p", "WHEN");
+		auto args = TokenizeArgs(params.cmd, "BPX", "-t", "-p", "WHEN", "-kt", "-kp");
 
 		if (args.size() < 2)
 		{
@@ -36,16 +36,48 @@ public:
 			{
 				if (Utils::AreStringsEqualI(args[i].c_str(), "-t"))
 				{
+					if (ethread)
+					{
+						Print("Syntax error.");
+						co_return;
+					}
+
 					ethread = Root::I->StateChange.Thread;
 				}
 				else if (Utils::AreStringsEqualI(args[i].c_str(), "-p"))
 				{
+					if (eprocess)
+					{
+						Print("Syntax error.");
+						co_return;
+					}
+
 					co_await BcAwaiter_Join{ Platform::GetCurrentEprocess(eprocess) };
 					if (!eprocess)
 					{
 						Print("Unable to get current eprocess.");
 						co_return;
 					}
+				}
+				else if (Utils::AreStringsEqualI(args[i].c_str(), "-kt") || Utils::AreStringsEqualI(args[i].c_str(), "-kp"))
+				{
+					ULONG64& value = Utils::AreStringsEqualI(args[i].c_str(), "-kt") ? ethread : eprocess;
+
+					if (i == args.size() - 1 || value)
+					{
+						Print("Syntax error.");
+						co_return;
+					}
+
+					i++;
+
+					eastl::pair<BOOLEAN, ULONG64> res;
+					co_await BcAwaiter_Join{ ResolveArg(res, args[i].c_str(), params.context, params.contextLen, params.is32bitCompat) };
+
+					if (!res.first)
+						co_return;
+					else
+						value = res.second;
 				}
 				else if (Utils::AreStringsEqualI(args[i].c_str(), "WHEN"))
 				{
@@ -76,7 +108,7 @@ public:
 
 			if (eprocess && ethread)
 			{
-				Print("-t and -p cannot be specified at the same time.");
+				Print("-t/-kt and -p/-kp cannot be specified at the same time.");
 				co_return;
 			}
 		}

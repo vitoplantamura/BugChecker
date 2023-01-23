@@ -71,10 +71,11 @@ public:
 	static BcCoroutine ResolveArg(eastl::pair<BOOLEAN, ULONG64>& res, const CHAR* arg, BYTE* context, ULONG contextLen, BOOLEAN is32bitCompat) noexcept;
 	static BcCoroutine PageIn(ULONG_PTR attachVal, ULONG_PTR pageInVal, BOOLEAN& res) noexcept;
 	static eastl::vector<ULONG> ParseListOfDecsArgs(const CHAR* cmdId, const eastl::string& cmd, ULONG size);
-	static BcCoroutine ScanStackForRets(BOOLEAN& res, eastl::vector<eastl::pair<ULONG64, ULONG64>>& addrs, BOOLEAN& is64, BYTE* context, BOOLEAN is32bitCompat, LONG depth) noexcept;
+	static BcCoroutine ScanStackForRets(BOOLEAN& res, eastl::vector<eastl::pair<ULONG64, ULONG64>>& addrs, BOOLEAN& is64, ULONG64 sp, BOOLEAN is32bitCompat, LONG depth) noexcept;
 	static BcCoroutine AddressToSymbol(eastl::string& retVal, ULONG64 l, BOOLEAN is64) noexcept;
 	static BOOLEAN IsRet(ZydisMnemonic mnemonic);
 	static BcCoroutine StepOver(BYTE* context, ZydisDecodedInstruction* thisInstr) noexcept;
+	static LONG GetNtDatatypeMemberOffset(const CHAR* typeName, const CHAR* memberName, const CHAR* expectedType);
 };
 
 typedef Cmd* (*PfnCreateCommand)();

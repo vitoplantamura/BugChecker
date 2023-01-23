@@ -18,6 +18,7 @@ At the moment, BugChecker requires a PS/2 keyboard for input and a linear frameb
 
 * Support for Windows XP up to Windows 11, x86 and x64, and SMP kernels. Support for WOW64 processes on x64.
 * Integration of [QuickJSPP](https://github.com/c-smile/quickjspp), which is a port of [QuickJS](https://bellard.org/quickjs/) to MSVC++. Before calling QuickJS, BugChecker saves the FPU state (on x86) and switches to an expanded stack of 128KB.
+* Commands accept JS expressions. For example, "U rip+rax*4" and "U MyJsFn(rax+2)" are valid commands. Custom functions can be defined in the Script Window. CPU registers are declared as global scope variables automatically by BugChecker.
 * Support for PDB symbol files. PDB files can be specified manually or Symbol Loader can download them from a symbol server.
 * JavaScript code can call the following asynchronous functions: WriteReg, ReadMem, WriteMem.
 * Breakpoints can have a JS condition: if condition evaluates to 0, no "breakin" happens. This allows to set "Logpoints" and breakpoints that can change the flow of execution.
@@ -99,7 +100,7 @@ The command name and syntax are chosen to be as close as possible to those of th
 * **BD list|***: Disable one or more breakpoints.
 * **BE list|***: Enable one or more breakpoints.
 * **BL (no parameters)**: List all breakpoints.
-* **BPX address [-t|-p] [WHEN js-expression]**: Set a breakpoint on execution.
+* **BPX address [-t|-p|-kt thread|-kp process] [WHEN js-expression]**: Set a breakpoint on execution.
 * **CLS (no parameters)**: Clear log window.
 * **DB/DW/DD/DQ [address] [-l len-in-bytes]**: Display memory as 8/16/32/64-bit values.
 * **EB/EW/ED/EQ address -v space-separated-values**: Edit memory as 8/16/32/64-bit values.
@@ -110,8 +111,9 @@ The command name and syntax are chosen to be as close as possible to those of th
 * **PAGEIN address**: Force a page of memory to be paged in (returns control to OS).
 * **PROC [search-string]**: Display process information.
 * **R register-name -v value**: Change a register value.
-* **STACK (no parameters)**: Scan the stack searching for return addresses.
+* **STACK [stack-ptr]**: Scan the stack searching for return addresses.
 * **T (no parameters)**: Trace one instruction.
+* **THREAD [-kt thread|-kp process]**: Display thread information.
 * **U address|DEST**: Unassemble instructions.
 * **VER (no parameters)**: Display version information.
 * **WD [window-size]**: Toggle the Disassembler window or set its size.

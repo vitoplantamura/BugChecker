@@ -66,6 +66,8 @@
     <ClCompile Include="Cmd_MOD.cpp" />
     <ClCompile Include="Cmd_LINES_WIDTH.cpp" />
     <ClCompile Include="Cmd_WR_WD_WS.cpp" />
+    <ClCompile Include="Cmd_CLS.cpp" />
+    <ClCompile Include="Cmd_THREAD.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Allocator.h" />
