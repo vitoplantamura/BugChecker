@@ -596,7 +596,7 @@ eastl::vector<BYTE> Cmd::ParseListOfBytesArgs(const CHAR* cmdId, const eastl::st
 	return bytes;
 }
 
-BcCoroutine Cmd::ScanStackForRets(BOOLEAN& res, eastl::vector<eastl::pair<ULONG64, ULONG64>>& addrs, BOOLEAN& is64, BYTE* context, BOOLEAN is32bitCompat, LONG depth) noexcept
+BcCoroutine Cmd::ScanStackForRets(BOOLEAN& res, eastl::vector<eastl::pair<ULONG64, ULONG64>>& addrs, BOOLEAN& is64, ULONG64 sp, BOOLEAN is32bitCompat, LONG depth) noexcept
 {
 	res = FALSE;
 	addrs.clear();
@@ -633,8 +633,6 @@ BcCoroutine Cmd::ScanStackForRets(BOOLEAN& res, eastl::vector<eastl::pair<ULONG6
 	}
 
 	// get and validate the stack pointer.
-
-	ULONG64 sp = ((CONTEXT*)context)->_6432_(Rsp, Esp);
 
 	is64 = _6432_(TRUE, FALSE) && !is32bitCompat;
 
@@ -873,4 +871,24 @@ BcCoroutine Cmd::StepOver(BYTE* context, ZydisDecodedInstruction* thisInstr) noe
 	// return to the caller.
 
 	co_return;
+}
+
+LONG Cmd::GetNtDatatypeMemberOffset(const CHAR* typeName, const CHAR* memberName, const CHAR* expectedType)
+{
+	LONG offset = -1;
+
+	VOID* symH = NULL;
+	auto type = GetNtDatatype(typeName, &symH);
+
+	if (type && symH)
+	{
+		auto member = Symbols::GetDatatypeMember(symH, type, memberName, expectedType);
+
+		if (member)
+		{
+			offset = member->offset;
+		}
+	}
+
+	return offset;
 }

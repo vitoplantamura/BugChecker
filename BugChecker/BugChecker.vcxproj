@@ -200,6 +200,7 @@
     <ClCompile Include="Cmd_R.cpp" />
     <ClCompile Include="Cmd_STACK.cpp" />
     <ClCompile Include="Cmd_T.cpp" />
+    <ClCompile Include="Cmd_THREAD.cpp" />
     <ClCompile Include="Cmd_U.cpp" />
     <ClCompile Include="Cmd_VER.cpp" />
     <ClCompile Include="Cmd_WR_WD_WS.cpp" />
