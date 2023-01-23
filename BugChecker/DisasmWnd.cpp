@@ -255,7 +255,7 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 				Utils::HexToString(Wnd::nrmClr != 0x71 ? 0x71 : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str()
 				:
 				!hasBp ? 
-				Utils::HexToString(Wnd::nrmClr != 0x07 ? 0x07 : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str()
+				Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)).c_str()
 				:
 				Utils::HexToString(Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str());
 		}
@@ -292,7 +292,7 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		{
 			symbolPrologue = runtimeAddress == pc ? "" : "\n" + (Wnd::nrmClr != 0x0E ? "0E" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
 			symbolEpilogue = runtimeAddress == pc ? "" : !hasBp ?
-				"\n" + (Wnd::nrmClr != 0x07 ? "07" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)))
+				"\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE))
 				:
 				"\n" + (Wnd::nrmClr != 0x0B ? "0B" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
 
@@ -343,7 +343,7 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 							"\n" + (Wnd::nrmClr != 0x71 ? "71" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)))
 							:
 							!hasBp ?
-							"\n" + (Wnd::nrmClr != 0x07 ? "07" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)))
+							"\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE))
 							:
 							"\n" + (Wnd::nrmClr != 0x0B ? "0B" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE))))
 							+ moduleName + "!" + symName);
