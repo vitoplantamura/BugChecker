@@ -2,6 +2,7 @@
 
 #include "Cmd.h"
 #include "Root.h"
+#include "Utils.h"
 
 class Cmd_COLOR : public Cmd
 {
@@ -18,16 +19,15 @@ public:
 		if (args.size() == 1)
 		{
 			CHAR currentColors[64];
-			sprintf(currentColors, "Colors are %02X %02X %02X %02X %02X", Wnd::nrmClr, Wnd::bldClr, Wnd::rvrClr, Wnd::hlpClr, Wnd::hrzClr);
+			::sprintf(currentColors, "Colors are %02X %02X %02X %02X %02X", Wnd::nrmClr, Wnd::bldClr, Wnd::rvrClr, Wnd::hlpClr, Wnd::hrzClr);
 			Print(currentColors);
 			co_return;
 		}
 		else if (args.size() == 2)
 		{
 			eastl::vector<BYTE> colors;
-			if (args[1] == "reset" || args[1] == "RESET")
+			if (Utils::AreStringsEqualI(args[1].c_str(), "reset"))
 			{
-				colors.reserve(5);
 				colors.push_back(0x07);
 				colors.push_back(0x70);
 				colors.push_back(0x71);
@@ -43,11 +43,11 @@ public:
 				Print("Arguments number mismatch.");
 				co_return;
 			}
-			Wnd::nrmClr = colors.at(0);
-			Wnd::bldClr = colors.at(1);
-			Wnd::rvrClr = colors.at(2);
-			Wnd::hlpClr = colors.at(3);
-			Wnd::hrzClr = colors.at(4);
+			Wnd::nrmClr = colors[0];
+			Wnd::bldClr = colors[1];
+			Wnd::rvrClr = colors[2];
+			Wnd::hlpClr = colors[3];
+			Wnd::hrzClr = colors[4];
 			Root::I->CodeWindow.SyntaxColorAll();
 			params.result = CmdParamsResult::RedrawUi;
 			co_return;

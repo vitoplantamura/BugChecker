@@ -231,13 +231,13 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		CHAR line[512];
 
 		if (runtimeAddress == pc)
-			sprintf(line, "\n%02X", Wnd::rvrClr);
+			::sprintf(line, "\n%02X", Wnd::rvrClr);
 		else
 		{
 			if(!hasBp)
-				sprintf(line, "\n%02X", Wnd::nrmClr);
+				::sprintf(line, "\n%02X", Wnd::nrmClr);
 			else
-				sprintf(line, "\n%02X", Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr));
+				::sprintf(line, "\n%02X", Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr));
 		}
 
 		// print current instruction pointer and instruction bytes.
@@ -315,10 +315,10 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 			if (ptr)
 			{
 				if (jumpDest == -1)
-					sprintf(ptr, "\n%02X(NO JUMP)", Wnd::bldClr);
+					::sprintf(ptr, "\n%02X(NO JUMP)", Wnd::bldClr);
 				else
 				{
-					sprintf(ptr + 1, "\n%02X(JUMP X)", Wnd::bldClr);
+					::sprintf(ptr + 1, "\n%02X(JUMP X)", Wnd::bldClr);
 					*(ptr + 10) = jumpDest < pc ? 0x18 : 0x19; // up/down arrow.
 				}
 			}
