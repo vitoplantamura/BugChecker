@@ -27,8 +27,8 @@ public:
 			BreakPoint& bp = Root::I->BreakPoints[i];
 			
 			CHAR buffer[64];
-			::sprintf(buffer, "\n%02X%02d) %s ",
-				i == Root::I->BpHitIndex ? (Wnd::nrmClr != 0x0B? 0x0B : Utils::NegateByte(Wnd::nrmClr)) : (Wnd::nrmClr != 0x07 ? 0x07 : Utils::NegateByte(Wnd::nrmClr)),
+			::sprintf(buffer, "\n%s%02d) %s ",
+				i == Root::I->BpHitIndex ? Wnd::GetColorSpecial(0x0B).c_str() : Wnd::GetColorSpecial(0x07).c_str(),
 				i,
 				bp.skip ? "*" : " ");
 

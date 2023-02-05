@@ -2,6 +2,7 @@
 
 #include "Root.h"
 #include "Glyph.h"
+#include "Utils.h"
 
 #include <EASTL/unique_ptr.h>
 
@@ -849,4 +850,22 @@ VOID Wnd::UpdateScreen()
 	ULONG centerY = (Root::I->fbHeight - height) / 2;
 
 	Glyph::UpdateScreen(centerX, centerY, width, height);
+}
+
+eastl::string Wnd::GetColor(BYTE clr)
+{
+	return Utils::HexToString(clr, sizeof(BYTE));
+}
+
+eastl::string Wnd::GetColorSpecial(BYTE clr)
+{
+	if (!(clr & 0xF0))
+		clr |= Wnd::nrmClr & 0xF0;
+	else if ((clr & 0xF0) == (Wnd::nrmClr & 0xF0))
+		clr = (~clr & 0xF0) | (clr & 0x0F);
+
+	if (clr == Wnd::nrmClr || (clr >> 4) == (clr & 0x0F))
+		clr = (clr & 0xF0) | (~clr & 0x0F);
+
+	return Utils::HexToString(clr, sizeof(BYTE));
 }

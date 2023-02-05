@@ -56,6 +56,8 @@ public:
 	static BOOLEAN CheckWndWidthHeight(ULONG widthChr, ULONG heightChr);
 	static VOID CheckDivLineYs(LONG* keep = NULL);
 	static eastl::vector<DivLine> GetVisibleDivLines(LONG& first, LONG& last);
+	static eastl::string GetColor(BYTE clr);
+	static eastl::string GetColorSpecial(BYTE clr);
 
 protected:
 

@@ -57,23 +57,23 @@ VOID RegsWnd::DrawRegs(BYTE* context, BOOLEAN is32bitCompat)
 			addLine();
 
 		line +=
-			(oldCtxValid && highlight ? (Wnd::nrmClr != 0x0B ? "\n0B" : "\n" + Utils::HexToString(Utils::NegateByte(0x0B), sizeof(BYTE))) : "") +
+			(oldCtxValid && highlight ? "\n" + Wnd::GetColorSpecial(0x0B) : "") +
 			str +
-			"\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + "   " +
+			"\n" + Wnd::GetColor(Wnd::nrmClr) + "   " +
 			(!::strcmp(name, "R8") || !::strcmp(name, "R9") ? " " : "");
 	};
 
 	auto drawFlag = [&](ULONG64 mask, const CHAR idUppercase, ULONG64 value, ULONG64 oldValue, eastl::string& str) {
 
 		if (oldCtxValid && (value & mask) != (oldValue & mask))
-			str += "\n" + (Wnd::nrmClr != 0x0B? "0B" : Utils::HexToString(Utils::NegateByte(0x0B), sizeof(BYTE)));
+			str += "\n" + Wnd::GetColorSpecial(0x0B);
 
 		if (value & mask)
 			str += idUppercase;
 		else
 			str += idUppercase + 32;
 
-		str += "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + " ";
+		str += "\n" + Wnd::GetColor(Wnd::nrmClr) + " ";
 	};
 
 	auto drawFlags = [&](ULONG64 value, ULONG64 oldValue) {

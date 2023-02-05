@@ -19,7 +19,7 @@ eastl::string CodeWnd::GetLineToDraw(ULONG index)
 	else if (index == posY + (destY1 - destY0) && index + 1 < contents.size())
 		c = 0x1F;
 
-	s = "\n" + Utils::HexToString(Wnd::hrzClr, sizeof(BYTE)) + eastl::string(1, c) + "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)) + s;
+	s = "\n" + Wnd::GetColor(Wnd::hrzClr) + eastl::string(1, c) + "\n" + Wnd::GetColor(Wnd::nrmClr) + s;
 
 	return s;
 }
@@ -109,7 +109,7 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			if (strIndex == -1 && i > 0 && text[i - 1] == '/')
 			{
 				exAdd(i - 1, -1);
-				text.insert(i - 1, "\n" + Utils::HexToString(Wnd::hrzClr, sizeof(BYTE)));
+				text.insert(i - 1, "\n" + Wnd::GetColor(Wnd::hrzClr));
 				break;
 			}
 		}
@@ -118,14 +118,14 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			if (strIndex == -1)
 			{
 				exAdd(i, -1);
-				text.insert(i, Wnd::nrmClr != 0x04 ? "\n04" : "\n" + Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
+				text.insert(i, "\n" + Wnd::GetColorSpecial(0x04));
 				i += 3;
 				strIndex = i;
 			}
 			else if (text[strIndex] == c && !(slashCn % 2))
 			{
 				exAdd(strIndex, i);
-				text.insert(i + 1, "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)));
+				text.insert(i + 1, "\n" + Wnd::GetColor(Wnd::nrmClr));
 				i += 3;
 				strIndex = -1;
 			}
@@ -176,8 +176,8 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 		{
 			if (!isIdChar(pos, -1) && !isIdChar(pos, keywordSize) && !exCheck(pos))
 			{
-				text.insert(pos + keywordSize, "\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)));
-				text.insert(pos, Wnd::nrmClr != 0x03 ? "\n03" : "\n" + Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
+				text.insert(pos + keywordSize, "\n" + Wnd::GetColor(Wnd::nrmClr));
+				text.insert(pos, "\n" + Wnd::GetColorSpecial(0x03));
 
 				pos += 3 + 3;
 			}

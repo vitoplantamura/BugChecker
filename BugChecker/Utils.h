@@ -21,5 +21,4 @@ public:
 	static eastl::string I64ToString(LONG64 i64);
 	static eastl::vector<eastl::string> Tokenize(const eastl::string& str, const eastl::string& delimiter);
 	static VOID ToLower(eastl::string& s);
-	static BYTE NegateByte(BYTE b);
 };

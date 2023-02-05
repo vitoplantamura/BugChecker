@@ -332,8 +332,3 @@ VOID Utils::ToLower(eastl::string& s)
 		if (c >= 'A' && c <= 'Z')
 			c = c - 'A' + 'a';
 }
-
-BYTE Utils::NegateByte(BYTE b)
-{
-	return ~b;
-}

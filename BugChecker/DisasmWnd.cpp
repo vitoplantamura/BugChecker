@@ -237,7 +237,7 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 			if(!hasBp)
 				::sprintf(line, "\n%02X", Wnd::nrmClr);
 			else
-				::sprintf(line, "\n%02X", Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr));
+				::sprintf(line, "\n%s", Wnd::GetColorSpecial(0x0B).c_str());
 		}
 
 		// print current instruction pointer and instruction bytes.
@@ -246,18 +246,18 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		{
 			::strcat(line, "\n");
 			::strcat(line, runtimeAddress == pc ?
-				Utils::HexToString(Wnd::nrmClr != 0x7B ? 0x7B : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str()
+				Wnd::GetColorSpecial(0x7B).c_str()
 				:
-				Utils::HexToString(Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str());
+				Wnd::GetColorSpecial(0x0B).c_str());
 			::strcat(line, "===>");
 			::strcat(line, "\n");
-			::strcat(line, runtimeAddress == pc ? 
-				Utils::HexToString(Wnd::nrmClr != 0x71 ? 0x71 : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str()
+			::strcat(line, runtimeAddress == pc ?
+				Wnd::GetColorSpecial(0x71).c_str()
 				:
-				!hasBp ? 
-				Utils::HexToString(Wnd::nrmClr, sizeof(BYTE)).c_str()
+				!hasBp ?
+				Wnd::GetColor(Wnd::nrmClr).c_str()
 				:
-				Utils::HexToString(Wnd::nrmClr != 0x0B ? 0x0B : Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)).c_str());
+				Wnd::GetColorSpecial(0x0B).c_str());
 		}
 		else
 			::sprintf(line + ::strlen(line), "%04X", ((CONTEXT*)context)->SegCs & 0xFFFF);
@@ -290,11 +290,11 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		}
 		else
 		{
-			symbolPrologue = runtimeAddress == pc ? "" : "\n" + (Wnd::nrmClr != 0x0E ? "0E" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
+			symbolPrologue = runtimeAddress == pc ? "" : "\n" + Wnd::GetColorSpecial(0x0E);
 			symbolEpilogue = runtimeAddress == pc ? "" : !hasBp ?
-				"\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE))
+				"\n" + Wnd::GetColor(Wnd::nrmClr)
 				:
-				"\n" + (Wnd::nrmClr != 0x0B ? "0B" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)));
+				"\n" + Wnd::GetColorSpecial(0x0B);
 
 			auto len = ::strlen(line);
 
@@ -340,12 +340,12 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 						// add the line with the symbol name.
 
 						contents.push_back((runtimeAddress == pc ?
-							"\n" + (Wnd::nrmClr != 0x71 ? "71" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE)))
+							"\n" + Wnd::GetColorSpecial(0x71)
 							:
 							!hasBp ?
-							"\n" + Utils::HexToString(Wnd::nrmClr, sizeof(BYTE))
+							"\n" + Wnd::GetColor(Wnd::nrmClr)
 							:
-							"\n" + (Wnd::nrmClr != 0x0B ? "0B" : Utils::HexToString(Utils::NegateByte(Wnd::nrmClr), sizeof(BYTE))))
+							"\n" + Wnd::GetColorSpecial(0x0B))
 							+ moduleName + "!" + symName);
 
 						// add the address of the new line.
