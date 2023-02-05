@@ -538,8 +538,6 @@ eastl::vector<BYTE> Cmd::ParseListOfBytesArgs(const CHAR* cmdId, const eastl::st
 		return eastl::vector<BYTE>();
 	}
 
-	BOOLEAN all = FALSE;
-
 	for (int i = 0; i < argsStr.size(); i++)
 	{
 		auto& arg = argsStr[i];
@@ -548,10 +546,6 @@ eastl::vector<BYTE> Cmd::ParseListOfBytesArgs(const CHAR* cmdId, const eastl::st
 		{
 			Print("One or more arguments are out of range.");
 			return eastl::vector<BYTE>();
-		}
-		else if (arg == "*")
-		{
-			all = TRUE;
 		}
 		else
 		{
@@ -579,18 +573,6 @@ eastl::vector<BYTE> Cmd::ParseListOfBytesArgs(const CHAR* cmdId, const eastl::st
 
 			bytes.push_back(n);
 		}
-	}
-
-	if (all)
-	{
-		if (bytes.size())
-		{
-			Print("Specify * or a list of indexes, not both.");
-			return eastl::vector<BYTE>();
-		}
-
-		for (BYTE i = 0; i < size; i++)
-			bytes.push_back(i);
 	}
 
 	return bytes;
