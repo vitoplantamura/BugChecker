@@ -36,7 +36,7 @@ public:
 			}
 			else
 			{
-				colors = ParseListOfBytesArgs("COLOR", params.cmd, 6);
+				colors = ParseListOfBytesArgs("COLOR", params.cmd);
 			}
 			if (colors.size() != 5)
 			{

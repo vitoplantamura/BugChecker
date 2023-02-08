@@ -513,7 +513,7 @@ eastl::vector<ULONG> Cmd::ParseListOfDecsArgs(const CHAR* cmdId, const eastl::st
 	return nums;
 }
 
-eastl::vector<BYTE> Cmd::ParseListOfBytesArgs(const CHAR* cmdId, const eastl::string& cmd, ULONG size)
+eastl::vector<BYTE> Cmd::ParseListOfBytesArgs(const CHAR* cmdId, const eastl::string& cmd)
 {
 	eastl::vector<BYTE> bytes;
 
