@@ -2,6 +2,7 @@
 
 #include "Cmd.h"
 #include "Root.h"
+#include "Utils.h"
 
 class Cmd_BL : public Cmd
 {
@@ -24,10 +25,10 @@ public:
 		for (int i = 0; i < Root::I->BreakPoints.size(); i++)
 		{
 			BreakPoint& bp = Root::I->BreakPoints[i];
-
+			
 			CHAR buffer[64];
-			::sprintf(buffer, "%s%02d) %s ",
-				i == Root::I->BpHitIndex ? "\n0B" : "\n07",
+			::sprintf(buffer, "\n%s%02d) %s ",
+				i == Root::I->BpHitIndex ? Wnd::GetColorSpecial(0x0B).c_str() : Wnd::GetColorSpecial(0x07).c_str(),
 				i,
 				bp.skip ? "*" : " ");
 

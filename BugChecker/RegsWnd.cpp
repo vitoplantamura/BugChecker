@@ -1,4 +1,5 @@
 #include "RegsWnd.h"
+#include "Utils.h"
 
 #define MACRO_OF_MASK				( 1 << 11 )  // from the first BugChecker.
 #define MACRO_DF_MASK				( 1 << 10 )
@@ -56,23 +57,23 @@ VOID RegsWnd::DrawRegs(BYTE* context, BOOLEAN is32bitCompat)
 			addLine();
 
 		line +=
-			(oldCtxValid && highlight ? "\n0B" : "") +
+			(oldCtxValid && highlight ? "\n" + Wnd::GetColorSpecial(0x0B) : "") +
 			str +
-			"\n07   " +
+			"\n" + Wnd::GetColor(Wnd::nrmClr) + "   " +
 			(!::strcmp(name, "R8") || !::strcmp(name, "R9") ? " " : "");
 	};
 
 	auto drawFlag = [&](ULONG64 mask, const CHAR idUppercase, ULONG64 value, ULONG64 oldValue, eastl::string& str) {
 
 		if (oldCtxValid && (value & mask) != (oldValue & mask))
-			str += "\n0B";
+			str += "\n" + Wnd::GetColorSpecial(0x0B);
 
 		if (value & mask)
 			str += idUppercase;
 		else
 			str += idUppercase + 32;
 
-		str += "\n07 ";
+		str += "\n" + Wnd::GetColor(Wnd::nrmClr) + " ";
 	};
 
 	auto drawFlags = [&](ULONG64 value, ULONG64 oldValue) {

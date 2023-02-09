@@ -102,6 +102,7 @@ The command name and syntax are chosen to be as close as possible to those of th
 * **BL (no parameters)**: List all breakpoints.
 * **BPX address [-t|-p|-kt thread|-kp process] [WHEN js-expression]**: Set a breakpoint on execution.
 * **CLS (no parameters)**: Clear log window.
+* **COLOR [normal bold reverse help line]|[reset]**: Display, set or reset the screen colors.
 * **DB/DW/DD/DQ [address] [-l len-in-bytes]**: Display memory as 8/16/32/64-bit values.
 * **EB/EW/ED/EQ address -v space-separated-values**: Edit memory as 8/16/32/64-bit values.
 * **KL EN|IT**: Set keyboard layout.

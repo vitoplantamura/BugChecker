@@ -2,6 +2,7 @@
 
 #include "Root.h"
 #include "QuickJSCppInterface.h"
+#include "Utils.h"
 
 CodeWnd::CodeWnd()
 {
@@ -18,7 +19,7 @@ eastl::string CodeWnd::GetLineToDraw(ULONG index)
 	else if (index == posY + (destY1 - destY0) && index + 1 < contents.size())
 		c = 0x1F;
 
-	s = "\n02" + eastl::string(1, c) + "\n07" + s;
+	s = "\n" + Wnd::GetColor(Wnd::hrzClr) + eastl::string(1, c) + "\n" + Wnd::GetColor(Wnd::nrmClr) + s;
 
 	return s;
 }
@@ -108,7 +109,7 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			if (strIndex == -1 && i > 0 && text[i - 1] == '/')
 			{
 				exAdd(i - 1, -1);
-				text.insert(i - 1, "\n02");
+				text.insert(i - 1, "\n" + Wnd::GetColor(Wnd::hrzClr));
 				break;
 			}
 		}
@@ -117,14 +118,14 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 			if (strIndex == -1)
 			{
 				exAdd(i, -1);
-				text.insert(i, "\n04");
+				text.insert(i, "\n" + Wnd::GetColorSpecial(0x04));
 				i += 3;
 				strIndex = i;
 			}
 			else if (text[strIndex] == c && !(slashCn % 2))
 			{
 				exAdd(strIndex, i);
-				text.insert(i + 1, "\n07");
+				text.insert(i + 1, "\n" + Wnd::GetColor(Wnd::nrmClr));
 				i += 3;
 				strIndex = -1;
 			}
@@ -175,8 +176,8 @@ VOID CodeWnd::SyntaxColor(ULONG y)
 		{
 			if (!isIdChar(pos, -1) && !isIdChar(pos, keywordSize) && !exCheck(pos))
 			{
-				text.insert(pos + keywordSize, "\n07");
-				text.insert(pos, "\n03");
+				text.insert(pos + keywordSize, "\n" + Wnd::GetColor(Wnd::nrmClr));
+				text.insert(pos, "\n" + Wnd::GetColorSpecial(0x03));
 
 				pos += 3 + 3;
 			}
@@ -600,4 +601,10 @@ BcCoroutine CodeWnd::Eval(BYTE* context, ULONG contextLen, BOOLEAN is32bitCompat
 	}
 
 	co_await BcAwaiter_Join{ QuickJSCppInterface::Eval(s.c_str(), context, contextLen, is32bitCompat, NULL, FALSE, FALSE) };
+}
+
+VOID CodeWnd::SyntaxColorAll()
+{
+	for (ULONG y = 0; y < contents.size(); y++)
+		SyntaxColor(y);
 }

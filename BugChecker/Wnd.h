@@ -34,13 +34,19 @@ public:
 	ULONG posX = 0;
 	ULONG posY = 0;
 
+	static BYTE nrmClr; // normal color
+	static BYTE bldClr; // bold color
+	static BYTE rvrClr; // reverse color
+	static BYTE hlpClr; // help bar color
+	static BYTE hrzClr; // title bar color
+
 	eastl::vector<eastl::string> contents;
 
 public:
 
 	static ULONG StrLen(const CHAR* ptr, eastl::string* pOut = NULL);
 	static const CHAR* StrCount(const CHAR* ptr, ULONG c);
-	static void DrawString(const CHAR* psz, ULONG x, ULONG y, BYTE clr = 0x07, ULONG limit = 0, BYTE space = 0x20);
+	static void DrawString(const CHAR* psz, ULONG x, ULONG y, BYTE clr = nrmClr, ULONG limit = 0, BYTE space = 0x20);
 
 	static eastl::string HighlightHexNumber(eastl::string& pattern, LONG index, LONG* numOfItems);
 
@@ -50,6 +56,8 @@ public:
 	static BOOLEAN CheckWndWidthHeight(ULONG widthChr, ULONG heightChr);
 	static VOID CheckDivLineYs(LONG* keep = NULL);
 	static eastl::vector<DivLine> GetVisibleDivLines(LONG& first, LONG& last);
+	static eastl::string GetColor(BYTE clr);
+	static eastl::string GetColorSpecial(BYTE clr);
 
 protected:
 

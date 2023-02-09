@@ -231,17 +231,33 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		CHAR line[512];
 
 		if (runtimeAddress == pc)
-			::strcpy(line, "\n71");
+			::sprintf(line, "\n%02X", Wnd::rvrClr);
 		else
-			::strcpy(line, !hasBp ? "\n07" : "\n0B");
+		{
+			if(!hasBp)
+				::sprintf(line, "\n%02X", Wnd::nrmClr);
+			else
+				::sprintf(line, "\n%s", Wnd::GetColorSpecial(0x0B).c_str());
+		}
 
 		// print current instruction pointer and instruction bytes.
 
 		if (runtimeAddress == jumpDest)
 		{
-			::strcat(line, runtimeAddress == pc ? "\n7B" : "\n0B");
+			::strcat(line, "\n");
+			::strcat(line, runtimeAddress == pc ?
+				Wnd::GetColorSpecial(0x7B).c_str()
+				:
+				Wnd::GetColorSpecial(0x0B).c_str());
 			::strcat(line, "===>");
-			::strcat(line, runtimeAddress == pc ? "\n71" : !hasBp ? "\n07" : "\n0B");
+			::strcat(line, "\n");
+			::strcat(line, runtimeAddress == pc ?
+				Wnd::GetColorSpecial(0x71).c_str()
+				:
+				!hasBp ?
+				Wnd::GetColor(Wnd::nrmClr).c_str()
+				:
+				Wnd::GetColorSpecial(0x0B).c_str());
 		}
 		else
 			::sprintf(line + ::strlen(line), "%04X", ((CONTEXT*)context)->SegCs & 0xFFFF);
@@ -274,8 +290,11 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 		}
 		else
 		{
-			symbolPrologue = runtimeAddress == pc ? "" : "\n0E";
-			symbolEpilogue = runtimeAddress == pc ? "" : !hasBp ? "\n07" : "\n0B";
+			symbolPrologue = runtimeAddress == pc ? "" : "\n" + Wnd::GetColorSpecial(0x0E);
+			symbolEpilogue = runtimeAddress == pc ? "" : !hasBp ?
+				"\n" + Wnd::GetColor(Wnd::nrmClr)
+				:
+				"\n" + Wnd::GetColorSpecial(0x0B);
 
 			auto len = ::strlen(line);
 
@@ -296,10 +315,10 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 			if (ptr)
 			{
 				if (jumpDest == -1)
-					::strcpy(ptr, "\n70(NO JUMP)");
+					::sprintf(ptr, "\n%02X(NO JUMP)", Wnd::bldClr);
 				else
 				{
-					::strcpy(ptr + 1, "\n70(JUMP X)");
+					::sprintf(ptr + 1, "\n%02X(JUMP X)", Wnd::bldClr);
 					*(ptr + 10) = jumpDest < pc ? 0x18 : 0x19; // up/down arrow.
 				}
 			}
@@ -320,7 +339,14 @@ BcCoroutine DisasmWnd::Disasm(BYTE* context, BOOLEAN is32bitCompat, ULONG64 jump
 					{
 						// add the line with the symbol name.
 
-						contents.push_back((runtimeAddress == pc ? "\n71" : !hasBp ? "\n07" : "\n0B") + moduleName + "!" + symName);
+						contents.push_back((runtimeAddress == pc ?
+							"\n" + Wnd::GetColorSpecial(0x71)
+							:
+							!hasBp ?
+							"\n" + Wnd::GetColor(Wnd::nrmClr)
+							:
+							"\n" + Wnd::GetColorSpecial(0x0B))
+							+ moduleName + "!" + symName);
 
 						// add the address of the new line.
 
