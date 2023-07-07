@@ -14,6 +14,11 @@ By contrast, this version of BugChecker, by intercepting calls to KdSendPacket a
 
 At the moment, BugChecker requires a PS/2 keyboard for input and a linear framebuffer to write its output.
 
+Internal keyboard laptop can be PS/2, just check Device Manager:
+
+![device manager ps2](assets/devicemanagerps2.png)
+
+
 ## Features
 
 * Support for Windows XP up to Windows 11, x86 and x64, and SMP kernels. Support for WOW64 processes on x64.
