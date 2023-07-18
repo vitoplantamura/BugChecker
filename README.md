@@ -12,7 +12,7 @@ By contrast, the original BugChecker, like SoftICE as well, used to "take over" 
 
 By contrast, this version of BugChecker, by intercepting calls to KdSendPacket and KdReceivePacket in the kernel, presents itself to the machine being debugged as a second system running an external kernel debugger, but, in reality, everything happens on the same machine. Typically this is achieved by [replacing KDCOM.DLL](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/kdserial-extensibility-code-samples) (which is the module that implements serial cable communication for the KD API in Windows) and by starting the system in kernel debugging mode. This approach (inspired by [VirtualKD](https://github.com/4d61726b/VirtualKD-Redux)) lowers complexity and increases stability and compatibility (and portability, for example, to ARM - and modularity, since the lower level debugger capabilities are implemented behind KdXxxPacket and could be replaced with a custom implementation). Moreover, the presence of a kernel debugger at boot time (although "fake") makes Windows disable PatchGuard.
 
-At the moment, BugChecker requires a PS/2 keyboard for input and a linear framebuffer to write its output.
+At the moment, BugChecker requires a PS/2 keyboard for input and a linear framebuffer to write its output. Please note that the built-in keyboard of many modern laptops is still PS/2.
 
 ## Features
 
@@ -63,7 +63,7 @@ Note that VGA compatibility mode could limit the maximum screen resolution. VMwa
 
 Interestingly if BugChecker is installed on a system with more than one graphics card, it is possible to disable the display drivers of only one graphics card, which will be the card connected to the screen that will show the BugChecker UI. The second card (set as the main display) will retain all its 2D and 3D acceleration features, including OpenGL and DirectX support (NOTE: tested on VMware, with Windows 11 and a DisplayLink display). 
 
-Then click on "Start Driver", then on "Auto Detect" and finally on "Save". "Auto Detect" should be able to determine width, height, physical address and stride of the framebuffer automatically. However, you can specify these settings manually (don't forget to click on "Save" when finished). If "Stride" is 0, it is calculated as "Width" * 4 automatically when starting the driver. "Address" (i.e. physical address of the framebuffer) can be get obtained in Windows Device Manager, by clicking on "Properties" of the display device, under the "Resources" tab.
+Then click on "Start Driver", then on "Auto Detect" and finally on "Save". "Auto Detect" should be able to determine width, height, physical address and stride of the framebuffer automatically. However, you can specify these settings manually (don't forget to click on "Save" when finished). If "Stride" is 0, it is calculated as "Width" * 4 automatically when starting the driver. "Address" (i.e. physical address of the framebuffer) can be get in Windows Device Manager, by clicking on "Properties" of the display device, under the "Resources" tab.
 
 Then click on "Callback" in the "KDCOM Hook Method" section, then on "Copy/Replace Kdcom" and finally you can reboot the system.
 
@@ -132,6 +132,8 @@ The command name and syntax are chosen to be as close as possible to those of th
 
 **Note**: WDK should be installed in its default location, i.e. X:\WinDDK, where X is the drive where the BugChecker sources are saved.
 
+A step-by-step guide to building the kernel driver is available [here](https://github.com/vitoplantamura/BugChecker/issues/8#issuecomment-1631970352).
+
 ### Visual Studio Projects Description
 
 * **BugChecker**: this is the BugChecker kernel driver, where the entirety of the debugger is implemented. The "Release|x86" and "Release|x64" output files are included in the final package. During initialization, the driver loads its config file at "\SystemRoot\BugChecker\BugChecker.dat" (all the symbol files are stored in this directory too) and then it tries to locate "KDCOM.dll" in kernel space. If found, it tries to call its "KdSetBugCheckerCallbacks" exported function, thus hooking KdSendPacket and KdReceivePacket.
@@ -148,5 +150,6 @@ The command name and syntax are chosen to be as close as possible to those of th
 * [EASTL](https://github.com/electronicarts/EASTL): No way to use MSVC++ STL here. EASTL is an excellent alternative.
 * [Ghidra](https://github.com/NationalSecurityAgency/ghidra): the "pdb" project in BugChecker is from Ghidra. It was modified to generate BCS files.
 * [Zydis](https://github.com/zyantific/zydis): for the disassembler window in BugChecker.
+* [QuickJSPP](https://github.com/c-smile/quickjspp), which is a port of [QuickJS](https://bellard.org/quickjs/) to MSVC++: for the JavaScript engine integrated in the kernel driver.
 * [ReactOS](https://github.com/reactos/reactos): for the Windows KD internal type definitions.
 * [SerenityOS](https://github.com/SerenityOS/serenity): for the low level bitmap manipulation functions used by the BugChecker memory allocator. Since I started BugChecker after I saw a video of [Andreas](https://www.youtube.com/andreaskling) (after 10 years of abstinence from C/C++ and any type of low level programming), I wanted to include a small piece of SerenityOS in BugChecker.
